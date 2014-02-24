@@ -1,0 +1,29 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: brainwo_development
+  pool: 5
+  username: brainwo
+  password:
+  host: localhost
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: brainwo_test
+  pool: 5
+  username: brainwo
+  password:
+  host: localhost
+  port: 5432
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: brainwo_production
+  pool: 5
+  username: brainwo
+  password:
+  host: localhost
+  port: 5432
