@@ -8,6 +8,9 @@ gem 'rails', '4.0.3'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+# Flexible authentication solution for Rails with Warden
+gem 'devise'
+
 # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
 gem 'figaro'
 
