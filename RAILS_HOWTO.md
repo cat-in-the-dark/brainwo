@@ -3,8 +3,7 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
-
+**Please, do this actions step by step and all will be right!**
 * System dependencies
 ```bash
 sudo apt-get install git postgresql-9.1 postgresql-server-dev-9.1 curl
@@ -53,7 +52,7 @@ bundle exec rake db:create RAILS_ENV=test
 bundle exec rake db:migrate RAILS_ENV=test
 rspec spec/
 ```
-* Create new deployment on heroku. Read more at (heroku)[https://devcenter.heroku.com/articles/getting-started-with-rails4]
+* Create new deployment on heroku. Read more  [here](https://devcenter.heroku.com/articles/getting-started-with-rails4)
 ```bash
 wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 heroku login
