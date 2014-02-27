@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Owner do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:owner) { FactoryGirl.create :owner }
+
+  subject { owner }
+
+  it { should respond_to :quizzes }
+  it { should be_valid }
 end
