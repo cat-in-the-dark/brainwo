@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: brainwo_test
+  username: postgres
