@@ -51,10 +51,13 @@ ActiveRecord::Schema.define(version: 20140227074438) do
 
   create_table "quizzes", force: true do |t|
     t.string   "name"
+    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "owner_id"
   end
+
+  add_index "quizzes", ["owner_id", "name"], name: "index_quizzes_on_owner_id_and_name", unique: true, using: :btree
+  add_index "quizzes", ["owner_id"], name: "index_quizzes_on_owner_id", using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "name"
@@ -63,6 +66,7 @@ ActiveRecord::Schema.define(version: 20140227074438) do
     t.datetime "updated_at"
   end
 
+  add_index "teams", ["quiz_id", "name"], name: "index_teams_on_quiz_id_and_name", unique: true, using: :btree
   add_index "teams", ["quiz_id"], name: "index_teams_on_quiz_id", using: :btree
 
 end

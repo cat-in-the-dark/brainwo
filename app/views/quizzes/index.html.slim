@@ -1,2 +1,15 @@
-h1 Quizzes#index
-p Find me in app/views/quizzes/index.html.slim
+h1 My quizzes
+- @quizzes.each do |quiz|
+  .col-md-3
+    .thumbnail
+      .quiz-background
+      .caption
+        p= link_to quiz.name, quiz
+
+.col-md-3
+    .thumbnail
+      .quiz-new-background
+      .caption#js-new-quiz
+        = form_for @quiz do |f|
+          = f.text_field :name,  placeholder: 'Type quiz name', class: 'quiz-new-input'
+          = f.submit  'Create', hidden: true
