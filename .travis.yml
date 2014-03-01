@@ -9,3 +9,11 @@ before-script:
 - bundle rake db:test:prepare
 script:
 - bundle exec rspec spec/
+deploy:
+  provider: heroku
+  app: brainwo
+  api_key:
+    secure: XKT/drL9zaQb37sgv7uBYsqCXDUXGiW0UrE/F8SvrVqJg2+a0WvKtSX5sENgdpFk+IXmJbDz0+hENB/XNnl/6qucSma2ZQcahh3aOUyauWig0AIStRY7bg1lghpa4EErqU/SJ/PlGvrEEbAa2lPMyzDl78qxE5nEpYUvoMEOF3A=
+  run:
+    - rake db:migrate
+    - restart
