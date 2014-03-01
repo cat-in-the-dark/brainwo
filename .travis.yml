@@ -2,11 +2,11 @@ lanuage: ruby
 rvm: 2.1.0
 services:
 - postgresql
-before-script:
+before_script:
 - psql -c 'create database brainwo_test;' -U postgres
 - cp config/database.travis.yml config/database.yml
-- bundle rake db:migrate
-- bundle rake db:test:prepare
+- bundle exec rake db:migrate
+- bundle exec rake db:test:prepare
 script:
 - bundle exec rspec spec/
 deploy:
@@ -17,3 +17,7 @@ deploy:
   run:
     - rake db:migrate
     - restart
+notifications:
+  email:
+    - ilya.blan4@gmail.com
+    - kolbasisha@gmail.com
