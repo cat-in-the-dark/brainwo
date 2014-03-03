@@ -8,7 +8,6 @@ describe Participant do
   it { should respond_to :name }
   it { should respond_to :surname }
   it { should respond_to :team }
-  it { should respond_to :quiz }
   it { should be_valid }
 
   describe 'when name not presence' do
