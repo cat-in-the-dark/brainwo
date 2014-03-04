@@ -18,4 +18,11 @@ describe Team do
     subject { team_2 }
     it { should_not be_valid }
   end
+
+  describe 'when name too long' do
+    before do
+      team.name = 'a' * 51
+    end
+     it { should_not be_valid }
+  end
 end

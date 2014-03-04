@@ -33,4 +33,11 @@ describe Question do
 
     it { should_not be_valid }
   end
+
+  describe 'when title too long' do
+    before do
+      question.title = 'a' * 51
+    end
+    it { should_not be_valid }
+  end
 end

@@ -18,6 +18,22 @@ describe Participant do
     it { should_not be_valid }
   end
 
+   describe 'when name too long' do
+    before do
+      participant.name = 'a' * 21
+    end
+
+    it { should_not be_valid }
+  end
+
+  describe 'when surname too long' do
+    before do
+      participant.surname = 'a' * 31
+    end
+
+    it { should_not be_valid }
+  end
+
   describe 'when surname not presence' do
     before do
       participant.surname = ''
