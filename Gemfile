@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
+
+# for rvm usage
 ruby '2.1.0'
 #ruby-gemset=brainwo
 
@@ -31,6 +33,15 @@ gem 'jquery-rails'
 
 # A lightweight templating engine. Instead erb
 gem 'slim-rails'
+
+# markdown parser
+gem 'github-markdown'
+
+# Javascript syntax highlighter
+gem 'rails-assets-highlightjs'
+
+# An Embeddable JavaScript Markdown Editor
+gem 'rails-assets-bootstrap-markdown'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
