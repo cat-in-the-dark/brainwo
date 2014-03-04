@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require highlightjs
+//= require bootstrap-markdown
 // require bootstrap
 //= require_tree .
