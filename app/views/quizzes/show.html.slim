@@ -1,0 +1,5 @@
+h1= @quiz.name
+-if @quiz.started?
+  =link_to t('quiz.close'), close_quiz_path(@quiz), id: 'js-start-quiz', class: 'btn btn-warning'
+-else
+  =link_to t('quiz.start'), start_quiz_path(@quiz), id: 'js-start-quiz', class: 'btn btn-primary'
