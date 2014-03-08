@@ -5,5 +5,6 @@ FactoryGirl.define do
     sequence(:title) {|n| "question#{n}"}
     description "MyText"
     answer "MyText"
+    quiz
   end
 end
