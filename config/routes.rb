@@ -13,6 +13,7 @@ Brainwo::Application.routes.draw do
     end
   end
   
+  resources :quizzes, only: [:index, :show]
   devise_for :owners
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
