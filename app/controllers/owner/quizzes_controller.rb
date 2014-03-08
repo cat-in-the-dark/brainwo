@@ -1,4 +1,4 @@
-class QuizzesController < ApplicationController
+class Owner::QuizzesController < ApplicationController
   skip_before_action :authenticate_owner!, only: :game
 
   def index

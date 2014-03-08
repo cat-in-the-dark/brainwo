@@ -1,4 +1,4 @@
-class QuestionsController < ApplicationController
+class Owner::QuestionsController < ApplicationController
 
   respond_to :html, :json
 

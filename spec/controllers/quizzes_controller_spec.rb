@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe QuizzesController do
+describe Owner::QuizzesController do
 end

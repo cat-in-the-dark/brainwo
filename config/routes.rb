@@ -1,14 +1,17 @@
 Brainwo::Application.routes.draw do
-  resources :quizzes do
-    member do
-      get :start
-      get :close
-      get :game
-      get :set_question
-      get :questions
+  namespace :owner do
+    resources :questions
+    resources :quizzes do
+      member do
+        get :start
+        get :close
+        get :game
+        get :set_question
+        get :questions
+      end
     end
   end
-  resources :questions
+  
   devise_for :owners
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.

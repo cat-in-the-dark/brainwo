@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe QuestionsController do
+describe Owner::QuestionsController do
   let(:owner) { FactoryGirl.create :owner }
 
   context 'when user is signed in' do
