@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Owner::QuestionsController do
   let(:owner) { FactoryGirl.create :owner }
+  let(:quiz) { FactoryGirl.create :quiz, owner: owner }
 
   context 'when user is signed in' do
     before do
@@ -27,7 +28,7 @@ describe Owner::QuestionsController do
 
     describe "GET 'new'" do
       before do
-        get :new
+        get :new, quiz_id: quiz.id
       end
 
       it { expect(response).to render_template :new }

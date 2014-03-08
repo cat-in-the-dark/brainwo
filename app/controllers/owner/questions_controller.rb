@@ -1,11 +1,6 @@
 class Owner::QuestionsController < OwnerController
   respond_to :html, :json
 
-  def index
-    @questions = Question.all
-    respond_with @questions
-  end
-
   def show
     @question = Question.find params[:id]
     respond_with @question
@@ -27,12 +22,14 @@ class Owner::QuestionsController < OwnerController
   end
 
   def new
-    @question = Question.new
+    @quiz = Quiz.find params[:quiz_id]
+    @question = @quiz.questions.build
     respond_with @question
   end
 
   def create
-    @question = Question.new question_params
+    @quiz = Quiz.find params[:quiz_id]
+    @question = @quiz.questions.build question_params
 
     if @question.save
       redirect_to [:owner, @question]

@@ -8,7 +8,7 @@ hr
 
 h3
   | Questions
-  span= link_to 'New', new_owner_question_path, class: 'btn btn-success'
+  span= link_to 'New', new_owner_question_path({quiz_id: @quiz.id}), class: 'btn btn-success'
 table.table.table-hover
   thead
     tr

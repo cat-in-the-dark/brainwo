@@ -1,4 +1,5 @@
 = form_for [:owner, @question] do |f|
+  = hidden_field_tag :quiz_id, @quiz.id
   .form-group
     = f.label :title
     = f.text_field :title, class: 'form-control'

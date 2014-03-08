@@ -31,6 +31,16 @@ class Owner::QuizzesController < OwnerController
     @quiz = owner.quizzes.build
   end
 
+  def create
+    @quiz = owner.quizzes.build quiz_params
+
+    if @quiz.save
+      redirect_to [:owner, @quiz]
+    else
+      render [:owner, :new]
+    end
+  end
+
   def questions
     @quiz = Quiz.find params[:id]
     @questions = @quiz.questions

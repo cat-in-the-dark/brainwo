@@ -5,5 +5,6 @@ describe Owner do
 
   subject { owner }
 
+  it { should respond_to :quizzes }
   it { should be_valid }
 end
