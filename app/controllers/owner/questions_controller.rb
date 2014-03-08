@@ -1,5 +1,4 @@
-class Owner::QuestionsController < ApplicationController
-
+class Owner::QuestionsController < OwnerController
   respond_to :html, :json
 
   def index

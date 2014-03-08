@@ -1,10 +1,11 @@
 Brainwo::Application.routes.draw do
   namespace :owner do
+    root 'quizzes#index'
     resources :questions
     resources :quizzes do
       member do
-        get :start
-        get :close
+        put :start
+        put :close
         get :game
         get :set_question
         get :questions

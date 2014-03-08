@@ -1,9 +1,8 @@
 - if @question
   = markdown @question.description
-  - if signed_in?
-    = link_to 'next question', questions_quiz_path(@quiz)
+  = link_to 'next question', questions_owner_quiz_path(@quiz)
 - else
   -if @quiz.started?
     h1 Wait for next question
   -else
-    h1 GAME NOT STARTED
+    h1 QUIZ NOT STARTED

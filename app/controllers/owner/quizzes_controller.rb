@@ -1,6 +1,4 @@
-class Owner::QuizzesController < ApplicationController
-  skip_before_action :authenticate_owner!, only: :game
-
+class Owner::QuizzesController < OwnerController
   def index
   end
 
@@ -12,14 +10,14 @@ class Owner::QuizzesController < ApplicationController
     @quiz = Quiz.find params[:id]
     @quiz.start!
     
-    redirect_to questions_quiz_path(@quiz)
+    redirect_to questions_owner_quiz_path(@quiz)
   end
 
   def close
     @quiz = Quiz.find params[:id]
     @quiz.close!
 
-    redirect_to @quiz
+    redirect_to owner_quiz_path @quiz
   end
 
   def game
@@ -39,6 +37,6 @@ class Owner::QuizzesController < ApplicationController
     @quiz = Quiz.find params[:id]
     @question = Question.find params[:question_id]
     @quiz.set_next_question! @question
-    redirect_to game_quiz_path @quiz
+    redirect_to game_owner_quiz_path @quiz
   end
 end

@@ -4,4 +4,4 @@ table
   - @questions.each do |question|
     tr
       td= question.title 
-      td= link_to 'select', set_question_quiz_path(@quiz, {question_id: question.id})
+      td= link_to 'select', set_question_owner_quiz_path(@quiz, {question_id: question.id})

@@ -1,0 +1,18 @@
+.navbar-header
+  button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target=".bar"
+    span.sr-only Toggle navigation
+    span.icon-bar
+    span.icon-bar
+    span.icon-bar
+  = link_to 'BrainWO', root_path, class: 'navbar-brand' 
+
+nav.collapse.navbar-collapse.bar role="navigation"
+  ul.nav.navbar-nav
+    li= link_to 'Quizzes', owner_quizzes_path
+    li= link_to 'Teams', '#'
+    li= link_to 'Current quiz', '#'
+  
+  ul.nav.navbar-nav.navbar-right
+    li
+      = link_to destroy_owner_session_path, method: :delete do
+        span.glyphicon.glyphicon-off
