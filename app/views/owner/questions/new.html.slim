@@ -1,4 +1,5 @@
 = form_for [:owner, @question] do |f|
+  = render 'owner/layouts/error_messages', object: f.object
   = hidden_field_tag :quiz_id, @quiz.id
   .form-group
     = f.label :title
