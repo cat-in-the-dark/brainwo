@@ -9,14 +9,6 @@ describe Owner::QuestionsController do
       controller.send(:sign_in, owner)
     end
 
-    describe "GET 'index'" do
-      before do
-        get :index
-      end
-
-      it { expect(response).to render_template :index }
-    end
-
     describe "GET 'show'" do
       let(:question) { FactoryGirl.create :question }
       before do
@@ -45,14 +37,7 @@ describe Owner::QuestionsController do
   end
 
 
-  context 'when user is not signed in' do   
-    describe "GET 'index'" do
-      before do
-        get :index
-      end
-
-      it { expect(response).to redirect_to new_owner_session_path }
-    end
+  context 'when user is not signed in' do
 
     describe "GET 'show'" do
       let(:question) { FactoryGirl.create :question }
