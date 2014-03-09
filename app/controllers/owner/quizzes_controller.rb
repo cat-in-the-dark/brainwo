@@ -41,6 +41,21 @@ class Owner::QuizzesController < OwnerController
     end
   end
 
+  def edit
+    @quiz = Quiz.find params[:id]
+  end
+
+  def update
+    @quiz = Quiz.find params[:id]
+
+    if @quiz.update_attributes quiz_params
+      flash[:success] = "Quiz #{@quiz.name} updated"
+      redirect_to [:owner, @quiz]
+    else
+      render [:owner, :edit]
+    end
+  end
+
   def questions
     @quiz = Quiz.find params[:id]
     @questions = @quiz.questions
@@ -67,5 +82,11 @@ class Owner::QuizzesController < OwnerController
         format.html { render :edit }
       end
     end
+  end
+
+  private
+
+  def quiz_params
+    params.require(:quiz).permit(:name)
   end
 end
