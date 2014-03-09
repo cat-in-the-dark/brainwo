@@ -10,7 +10,7 @@ class Quiz < ActiveRecord::Base
   validates_uniqueness_of :name, scope: :owner
   validates :owner, presence: true
 
-  scope :started, -> { where(status: started) }
+  scope :started, -> { where(status: :started) }
 
   def start!
     update_attribute :status, :started
