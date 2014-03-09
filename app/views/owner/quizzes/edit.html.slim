@@ -1,8 +1,8 @@
-h1 Create quiz
+h1 Update quiz
 = form_for [:owner, @quiz] do |f|
   = render 'owner/layouts/error_messages', object: f.object
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control'
   hr
-  = f.button 'Create', class: 'btn btn-success'
+  = f.button 'Save', class: 'btn btn-success'

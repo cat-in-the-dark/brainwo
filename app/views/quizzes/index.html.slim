@@ -1,2 +1,13 @@
-h1 Quizzes#index
-p Find me in app/views/quizzes/index.html.slim
+h1 Quizzes
+hr
+table.table.table-hover
+  thead
+    tr
+      th= 'Name'
+      th= 'Registered teams'
+  tbody
+    - @quizzes.each do |quiz|
+      tr
+        td= quiz.name
+        td= quiz.teams.count
+        td= link_to 'Start', quiz

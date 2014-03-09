@@ -1,2 +1,9 @@
-h1 Quizzes#show
-p Find me in app/views/quizzes/show.html.slim
+h1= @quiz.name
+hr
+- if @question
+  = markdown @question.description
+- else
+  -if @quiz.started?
+    h1 Wait for next question
+  -else
+    h1 QUIZ NOT STARTED
