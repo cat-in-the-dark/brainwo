@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: participants
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  surname    :string(255)
+#  team_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Participant < ActiveRecord::Base
   belongs_to :team
 

@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: quizzes
+#
+#  id                  :integer          not null, primary key
+#  name                :string(255)
+#  owner_id            :integer
+#  status              :string(255)
+#  created_at          :datetime
+#  updated_at          :datetime
+#  current_question_id :integer
+#
+
 class Quiz < ActiveRecord::Base
   STATUSES = [:moderating, :started, :closed]
 

@@ -10,6 +10,9 @@ gem 'rails', '4.0.3'
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+# Annotate models 
+gem 'annotate'
+
 # Flexible authentication solution for Rails with Warden
 gem 'devise'
 
