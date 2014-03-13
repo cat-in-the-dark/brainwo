@@ -5,12 +5,13 @@ describe Owner::QuestionsController do
   let(:quiz) { FactoryGirl.create :quiz, owner: owner }
 
   context 'when user is signed in' do
+    let(:question) { FactoryGirl.create :question, quiz: quiz }
+
     before do
       controller.send(:sign_in, owner)
     end
 
-    describe "GET 'show'" do
-      let(:question) { FactoryGirl.create :question }
+    describe "GET 'show'" do     
       before do
         get :show, id: question.id
       end
@@ -27,7 +28,6 @@ describe Owner::QuestionsController do
     end
 
     describe "GET 'edit'" do
-      let(:question) { FactoryGirl.create :question }
       before do
         get :edit, id: question.id
       end
@@ -38,9 +38,9 @@ describe Owner::QuestionsController do
 
 
   context 'when user is not signed in' do
+    let(:question) { FactoryGirl.create :question, quiz: quiz }
 
     describe "GET 'show'" do
-      let(:question) { FactoryGirl.create :question }
       before do
         get :show, id: question.id
       end
@@ -57,7 +57,6 @@ describe Owner::QuestionsController do
     end
 
     describe "GET 'edit'" do
-      let(:question) { FactoryGirl.create :question }
       before do
         get :edit, id: question.id
       end

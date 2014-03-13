@@ -2,17 +2,17 @@ class Owner::QuestionsController < OwnerController
   respond_to :html, :json
 
   def show
-    @question = Question.find params[:id]
+    @question = questions.find params[:id]
     respond_with @question
   end
 
   def edit
-    @question = Question.find params[:id]
+    @question = questions.find params[:id]
     respond_with @question
   end
 
   def update
-    @question = Question.find params[:id]
+    @question = questions.find params[:id]
 
     if @question.update_attributes question_params
       redirect_to [:owner, @question]
@@ -22,13 +22,13 @@ class Owner::QuestionsController < OwnerController
   end
 
   def new
-    @quiz = Quiz.find params[:quiz_id]
+    @quiz = quizzes.find params[:quiz_id]
     @question = @quiz.questions.build
     respond_with @question
   end
 
   def create
-    @quiz = Quiz.find params[:quiz_id]
+    @quiz = quizzes.find params[:quiz_id]
     @question = @quiz.questions.build question_params
 
     if @question.save
@@ -39,7 +39,7 @@ class Owner::QuestionsController < OwnerController
   end
 
   def destroy
-    @question = Question.find params[:id]
+    @question = questions.find params[:id]
     if @question.destroy
       respond_with(@question, status: :destroyed) do |format|
         format.html do
