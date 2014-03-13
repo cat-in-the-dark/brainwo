@@ -14,10 +14,20 @@ table.table.table-hover
     tr
       th= '#'
       th= 'Title'
+      th= 'Tags'
+      th= 'Painful'
+      th= 'Author'
+      th
+      th
       th
   tbody
     - @questions.each do |question|
       tr
         td= question.id
         td= question.title
-        td= link_to 'preview', owner_question_path(question)
+        td
+        td
+        td
+        td= link_to 'Edit', edit_owner_question_path(question), class: 'btn btn-warning'
+        td= link_to 'Delete', owner_question_path(question), class: 'btn btn-danger'
+        td= link_to 'Go', set_question_owner_quiz_path(@quiz, {question_id: question.id}), class: 'btn btn-success'

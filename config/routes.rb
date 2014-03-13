@@ -2,15 +2,12 @@ Brainwo::Application.routes.draw do
   namespace :owner do
     root 'quizzes#index'
     resources :questions
-    resources :quizzes do
-      member do
-        put :start
-        put :close
-        get :game
-        get :set_question
-        get :questions
-      end
-    end
+    resources :quizzes
+    
+    put 'game/:quiz_id/start' => 'game#start', as: :start_game
+    put 'game/:quiz_id/close' => 'game#close', as: :close_game
+    post 'game/set_question' => 'game#set_question', as: :set_game_question
+    get 'game/:quiz_id' => 'game#show', as: :game
   end
   
   resources :quizzes, only: [:index, :show]

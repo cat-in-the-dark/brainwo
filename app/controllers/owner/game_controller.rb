@@ -1,27 +1,30 @@
 class Owner::GameController < OwnerController
+  before_action :build_game
+
   def start
-    @quiz = Quiz.find params[:id]
-    @quiz.start!
+    @game.start
     
-    redirect_to questions_owner_quiz_path(@quiz)
+    redirect_to [:owner, game_path(quiz_id: @game.quiz.id)]
   end
 
   def close
-    @quiz = Quiz.find params[:id]
-    @quiz.close!
+    @game.close
 
-    redirect_to owner_quiz_path @quiz
+    redirect_to [:owner, @quiz]
   end
 
-  def game
-    @quiz = Quiz.find params[:id]
-    @question = @quiz.current_question
+  def show
+    @question = game.current_question
   end
 
   def set_question
-    @quiz = Quiz.find params[:id]
-    @question = Question.find params[:question_id]
-    @quiz.set_next_question! @question
-    redirect_to game_owner_quiz_path @quiz
+    @question = game.questions.find params[:question_id]
+    game.set_question @question
+  end
+
+  private
+  def build_game
+    quiz = quizzes.find params[:quiz_id]
+    @game = GameService.new quiz
   end
 end
