@@ -1,8 +1,33 @@
-- if @question
-  = markdown @question.description
-  = link_to 'next question', [:owner, @quiz]
-- else
-  -if @quiz.started?
-    h1 Wait for next question
-  -else
-    h1 QUIZ NOT STARTED
+h1= @game.quiz.name
+-if @game.started?
+  =link_to t('quiz.close'), owner_close_game_path({quiz_id: @game.quiz.id}), method: :put, id: 'js-start-quiz', class: 'btn btn-warning'
+-else
+  =link_to t('quiz.start'), owner_start_game_path({quiz_id: @game.quiz.id}), method: :put, id: 'js-start-quiz', class: 'btn btn-primary'
+
+hr
+
+h3
+  | Questions
+  span= link_to 'New', new_owner_question_path({quiz_id: @game.quiz.id}), class: 'btn btn-success'
+table.table.table-hover
+  thead
+    tr
+      th= '#'
+      th= 'Title'
+      th= 'Tags'
+      th= 'Painful'
+      th= 'Author'
+      th
+      th
+      th
+  tbody
+    - @game.quiz.questions.each do |question|
+      tr
+        td= question.id
+        td= question.title
+        td
+        td
+        td
+        td= link_to 'Edit', edit_owner_question_path(question), class: 'btn btn-warning'
+        td= link_to 'Delete', owner_question_path(question), class: 'btn btn-danger'
+        td= link_to 'Go', owner_set_game_question_path({quiz_id: @game.quiz.id, question_id: question.id}), class: 'btn btn-success'

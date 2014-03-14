@@ -1,4 +1,6 @@
-h1 Quizzes
+h1 
+  | Quizzes
+  small= link_to 'New', new_owner_quiz_path, class: 'btn btn-success'
 hr
 table.table.table-hover
   thead
@@ -7,4 +9,4 @@ table.table.table-hover
   tbody
     - @quizzes.each do |quiz|
       tr
-        td= link_to quiz.name, [:owner, quiz]
+        td= link_to quiz.name, owner_game_path({quiz_id: quiz.id})

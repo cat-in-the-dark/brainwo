@@ -6,17 +6,23 @@ class GameService
     @quiz = quiz
   end
 
+  def questions
+    quiz.questions
+  end
+
   def current_question
     quiz.current_question
   end
 
-  def set_question(question)
-    return nil unless question.quiz.eql? quiz
+  def set_question(question_id)
+    question = quiz.questions.find question_id
 
     if started?
       quiz.current_question = question
       quiz.save
     end
+  rescue
+    nil
   end
 
   def start

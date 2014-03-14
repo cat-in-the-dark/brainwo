@@ -4,22 +4,26 @@ class Owner::GameController < OwnerController
   def start
     @game.start
     
-    redirect_to [:owner, game_path(quiz_id: @game.quiz.id)]
+    redirect_to owner_game_path(quiz_id: @game.quiz.id)
   end
 
   def close
     @game.close
 
-    redirect_to [:owner, @quiz]
+    redirect_to owner_game_path(quiz_id: @game.quiz.id)
   end
 
   def show
-    @question = game.current_question
+  end
+
+  def current_question
+    @question = @game.current_question
   end
 
   def set_question
-    @question = game.questions.find params[:question_id]
-    game.set_question @question
+    @game.set_question params[:question_id]
+    
+    redirect_to owner_game_current_question_path(quiz_id: @game.quiz.id)
   end
 
   private

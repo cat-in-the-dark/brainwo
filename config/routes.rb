@@ -6,8 +6,9 @@ Brainwo::Application.routes.draw do
     
     put 'game/:quiz_id/start' => 'game#start', as: :start_game
     put 'game/:quiz_id/close' => 'game#close', as: :close_game
-    post 'game/set_question' => 'game#set_question', as: :set_game_question
+    get 'game/:quiz_id/set_question/:question_id' => 'game#set_question', as: :set_game_question
     get 'game/:quiz_id' => 'game#show', as: :game
+    get 'game/:quiz_id/current_question' => 'game#current_question', as: :game_current_question
   end
   
   resources :quizzes, only: [:index, :show]

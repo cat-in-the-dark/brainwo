@@ -12,7 +12,7 @@ class Owner::QuestionsController < OwnerController
   end
 
   def update
-    @question = questions.find params[:id]
+    @question = questions.readonly(false).find params[:id]
 
     if @question.update_attributes question_params
       redirect_to [:owner, @question]

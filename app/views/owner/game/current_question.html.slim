@@ -1,0 +1,8 @@
+- if @question
+  = markdown @question.description
+  = link_to 'questions', owner_game_path({quiz_id: @game.quiz.id})
+- else
+  -if @quiz.started?
+    h1 Wait for next question
+  -else
+    h1 QUIZ NOT STARTED

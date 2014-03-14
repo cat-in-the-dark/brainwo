@@ -13,6 +13,7 @@ describe Owner::GameController do
   describe 'start game' do
     before do
       put :start, quiz_id: quiz.id
+      quiz.reload
     end
 
     it { expect(game).to be_started }
@@ -21,16 +22,9 @@ describe Owner::GameController do
   describe 'close game' do
     before do
       put :close, quiz_id: quiz.id
+      quiz.reload
     end
 
     it { expect(game).to be_closed }
-  end
-
-  describe 'set question' do
-    before do
-      post :set_question, quiz_id: quiz.id, question_id: quiestion.id
-    end
-
-    it { expect(game.current_question).to be question }
   end
 end

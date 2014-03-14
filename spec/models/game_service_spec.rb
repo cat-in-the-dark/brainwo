@@ -11,6 +11,8 @@ describe GameService do
   it { should respond_to :closed? }
   it { should respond_to :current_question }
   it { should respond_to :set_question }
+  it { should respond_to :quiz }
+  it { should respond_to :questions }
 
   describe 'when start game' do
     before do
@@ -35,7 +37,7 @@ describe GameService do
     
     before do
       game.start
-      game.set_question question 
+      game.set_question question.id 
     end
 
     it {
@@ -47,7 +49,7 @@ describe GameService do
     let(:question) { FactoryGirl.create :question, quiz: quiz }
 
     before do
-      game.set_question question
+      game.set_question question.id
     end
     subject { quiz.reload }
 
@@ -59,7 +61,7 @@ describe GameService do
 
     before do
       game.start
-      game.set_question question
+      game.set_question question.id
     end
     subject { quiz.reload }
 
