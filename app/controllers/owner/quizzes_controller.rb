@@ -1,29 +1,29 @@
 class Owner::QuizzesController < OwnerController
+  respond_to :html, :json
+
   def index
     @quizzes = quizzes
-  end
-
-  def show
-    @quiz = quizzes.find params[:id]
-    @questions = @quiz.questions
+    respond_with @quizzes
   end
 
   def new
     @quiz = quizzes.build
+    respond_with @quiz
   end
 
   def create
     @quiz = quizzes.build quiz_params
 
     if @quiz.save
-      redirect_to [:owner, @quiz]
+      redirect_to owner_quizzes_path
     else
-      render [:owner, :new]
+      render :new
     end
   end
 
   def edit
     @quiz = quizzes.find params[:id]
+    respond_with @quiz
   end
 
   def update
@@ -31,9 +31,9 @@ class Owner::QuizzesController < OwnerController
 
     if @quiz.update_attributes quiz_params
       flash[:success] = "Quiz #{@quiz.name} updated"
-      redirect_to [:owner, @quiz]
+      redirect_to owner_game_path({quiz_id: @quiz.id})
     else
-      render [:owner, :edit]
+      render :edit
     end
   end
 
