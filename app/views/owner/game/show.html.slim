@@ -22,7 +22,7 @@ table.table.table-hover
       th
   tbody
     - @game.quiz.questions.each do |question|
-      - if @game.current_question.id == question.id
+      - if @game.current_question && @game.current_question.id == question.id
         tr.success
           td= question.id
           td= question.title

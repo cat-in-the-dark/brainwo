@@ -1,9 +1,9 @@
-h1= @quiz.name
+h1= @game.quiz.name
 hr
 - if @question
   = markdown @question.core
 - else
-  -if @quiz.started?
+  -if @game.started?
     h1 Wait for next question
   -else
     h1 QUIZ NOT STARTED
