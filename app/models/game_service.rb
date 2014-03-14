@@ -19,10 +19,11 @@ class GameService
 
     if started?
       quiz.current_question = question
-      quiz.save
+      return quiz.save
     end
+    false
   rescue
-    nil
+    false
   end
 
   def start

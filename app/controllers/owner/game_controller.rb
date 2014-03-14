@@ -16,14 +16,18 @@ class Owner::GameController < OwnerController
   def show
   end
 
-  def current_question
-    @question = @game.current_question
+  def question
+    @question = @game.questions.find params[:question_id]
   end
 
   def set_question
-    @game.set_question params[:question_id]
-    
-    redirect_to owner_game_current_question_path(quiz_id: @game.quiz.id)
+    if @game.set_question params[:question_id]
+      flash[:success] = "Question showed to participants: #{@game.current_question.title}"
+      redirect_to owner_game_question_path({quiz_id: @game.quiz.id, question_id: @game.current_question.id})
+    else
+      flash[:danger] = 'Game not started!'
+      redirect_to owner_game_path(quiz_id: @game.quiz.id)
+    end
   end
 
   private
