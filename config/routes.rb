@@ -11,7 +11,11 @@ Brainwo::Application.routes.draw do
     get 'game/:quiz_id/question/:question_id' => 'game#question', as: :game_question
   end
   
-  resources :quizzes, only: [:index, :show]
+  resources :quizzes, only: [:index, :show] do
+    member do
+      post 'should_i_reload_page'
+    end
+  end
   devise_for :owners
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
