@@ -1,7 +1,7 @@
 h1= @quiz.name
 hr
 - if @question
-  = markdown @question.description
+  = markdown @question.core
 - else
   -if @quiz.started?
     h1 Wait for next question

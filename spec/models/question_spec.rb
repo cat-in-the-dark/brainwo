@@ -6,7 +6,8 @@ describe Question do
   subject { question }
 
   it { should respond_to :title }
-  it { should respond_to :description }
+  it { should respond_to :core }
+  it { should respond_to :foreword }
   it { should respond_to :answer }
   it { should respond_to :quiz }
   it { should be_valid }
@@ -27,9 +28,17 @@ describe Question do
     it { should_not be_valid }
   end
 
-  describe 'when description is not presence' do
+  describe 'when core is not presence' do
     before do
-      question.description = ''
+      question.core = ''
+    end
+
+    it { should_not be_valid }
+  end
+
+  describe 'when foreword is not presence' do
+    before do
+      question.foreword = ''
     end
 
     it { should_not be_valid }

@@ -3,7 +3,8 @@
 FactoryGirl.define do
   factory :question do
     sequence(:title) {|n| "question#{n}"}
-    description "MyText"
+    core "Participants see this core"
+    foreword "Only owner see this and read for participants"
     answer "MyText"
     quiz
   end

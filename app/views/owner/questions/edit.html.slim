@@ -7,7 +7,13 @@
     = f.label :answer
     = f.text_field :answer, class: 'form-control'
   
-  = f.label :description
-  = f.text_area :description, data: { provide: 'markdown'}, rows: 10
+  .form-group
+    = f.label :core
+    = f.text_area :core, data: { provide: 'markdown'}, rows: 5
+
+  .form-group
+    = f.label :foreword
+    = f.text_area :foreword, data: { provide: 'markdown'}, rows: 15
+  
   hr
   = f.button 'Update', class: 'btn btn-success'
