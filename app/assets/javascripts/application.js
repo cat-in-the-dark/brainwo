@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require highlightjs
 //= require bootstrap-markdown
+//= require turbolinks
 // require bootstrap
 //= require_tree .

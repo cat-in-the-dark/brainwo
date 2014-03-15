@@ -6,6 +6,7 @@ ruby '2.1.0'
 #ruby-gemset=brainwo
 
 gem 'rails', '4.0.3'
+gem 'thin'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -47,7 +48,7 @@ gem 'rails-assets-highlightjs'
 gem 'rails-assets-bootstrap-markdown'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-# gem 'turbolinks'
+gem 'turbolinks'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby'
