@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Brainwo::Application.config.secret_key_base = '063a64c8f04448cc20c7be3844b90ae76526d045315fb9f00b9b88d1cb20cb9a86992b06cdba31e7a3d0d68ef8506d87c2bf1260152f5b2bbd0266f5de7eaea8'
+Brainwo::Application.config.secret_key_base = ENV['SECRET_TOKEN'] || '063a64c8f04448cc20c7be3844b90ae76526d045315fb9f00b9b88d1cb20cb9a86992b06cdba31e7a3d0d68ef8506d87c2bf1260152f5b2bbd0266f5de7eaea8'

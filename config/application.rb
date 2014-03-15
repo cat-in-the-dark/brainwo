@@ -15,6 +15,7 @@ module Brainwo
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
+    I18n.enforce_available_locales = false
     config.time_zone = 'Moscow'
     config.active_record.default_timezone = :local
 
@@ -22,8 +23,10 @@ module Brainwo
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.generators do |g|
-      g.test_framework      :rspec, fixture: true
+      g.test_framework      :rspec, fixture: true, view_specs: false, routing_specs: false
       g.fixture_replacement :factory_girl
+      g.stylesheets false
+      g.javascripts false
     end
   end
 end
