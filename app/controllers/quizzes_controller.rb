@@ -12,6 +12,8 @@ class QuizzesController < ParticipantsController
     @question = @game.current_question
 
     stick_to_quiz @game.quiz
+  rescue
+    redirect_to :root
   end
 
   def should_i_reload_page

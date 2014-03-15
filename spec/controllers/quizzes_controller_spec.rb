@@ -18,4 +18,13 @@ describe QuizzesController do
 
     it { expect(response).to render_template :show }
   end
+
+  describe "GET 'show' with invalid quiz id" do
+    let(:quiz) { FactoryGirl.create :quiz }
+    before do
+      get :show, id: quiz.id.next
+    end
+
+    it { expect(response).to redirect_to :root }
+  end
 end
