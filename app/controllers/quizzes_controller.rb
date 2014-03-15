@@ -8,7 +8,7 @@ class QuizzesController < ParticipantsController
   end
 
   def show
-    @game = GameService.new(Quiz.find(params[:id]))
+    @game = GameService.new(Quiz.started.find(params[:id]))
     @question = @game.current_question
 
     stick_to_quiz @game.quiz
