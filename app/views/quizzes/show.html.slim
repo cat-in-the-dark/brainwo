@@ -15,7 +15,7 @@ javascript:
       url: "#{should_i_reload_page_quiz_url(@game.quiz)}", 
       type: 'POST', 
       dataType: 'json', 
-      data: {my_current_question_id: "#{@question.id}"},
+      data: {my_current_question_id: "#{@question_id}"},
       success: function(res) {
         console.log(res);
         if (res.reload == true) {
