@@ -29,7 +29,11 @@ class QuizzesController < ParticipantsController
       render json: {reload: false}
     end
   rescue
-    logger.info "RELOAD false + fail"
-    render json: {reload: false}
+    if @game.started?
+      logger.info "RELOAD false + fail"
+      render json: { reload: false }
+    else
+      render json: { reload: true }
+    end
   end
 end
