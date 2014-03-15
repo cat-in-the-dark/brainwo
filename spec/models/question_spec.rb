@@ -10,6 +10,8 @@ describe Question do
   it { should respond_to :foreword }
   it { should respond_to :answer }
   it { should respond_to :quiz }
+  it { should respond_to :team_answers }
+  it { should respond_to :teams }
   it { should be_valid }
 
   describe 'when quiz is not presence' do

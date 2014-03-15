@@ -7,6 +7,8 @@ describe Team do
 
   it { should respond_to :name }
   it { should respond_to :participants }
+  it { should respond_to :answers }
+  it { should respond_to :questions }
   it { should be_valid }
 
   describe 'when name is already in use' do

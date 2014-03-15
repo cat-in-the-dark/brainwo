@@ -11,6 +11,8 @@
 
 class Team < ActiveRecord::Base
   has_many :participants
+  has_many :answers, class_name: TeamAnswer
+  has_many :questions, through: :answers
   belongs_to :quiz
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
