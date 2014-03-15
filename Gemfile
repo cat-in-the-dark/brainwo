@@ -23,7 +23,7 @@ gem 'figaro'
 gem 'sass-rails'
 
 # Use twitter-bootstrap as frontend framework
-gem 'bootstrap-sass-rails'
+gem 'bootstrap-sass'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
