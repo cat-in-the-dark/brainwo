@@ -5,7 +5,7 @@ source 'https://rails-assets.org'
 ruby '2.1.0'
 #ruby-gemset=brainwo
 
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.4'
 gem 'thin'
 
 # Use postgresql as the database for Active Record
