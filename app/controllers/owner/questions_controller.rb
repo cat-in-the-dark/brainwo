@@ -39,12 +39,12 @@ class Owner::QuestionsController < OwnerController
   end
 
   def destroy
-    @question = questions.find params[:id]
+    @question = questions.readonly(false).find params[:id]
     if @question.destroy
       respond_with(@question, status: :destroyed) do |format|
         format.html do
           flash[:success] = "Question#{@question.title} destoroyed"
-          redirect_to owner_questions_path
+          redirect_to owner_game_path({quiz_id: @question.quiz.id})
         end
       end
     else

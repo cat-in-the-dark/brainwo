@@ -13,6 +13,7 @@ describe QuizzesController do
   describe "GET 'show'" do
     let(:quiz) { FactoryGirl.create :quiz }
     before do
+      GameService.new(quiz).start
       get :show, id: quiz.id
     end
 

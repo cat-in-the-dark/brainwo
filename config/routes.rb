@@ -2,7 +2,7 @@ Brainwo::Application.routes.draw do
   namespace :owner do
     root 'quizzes#index'
     resources :questions
-    resources :quizzes
+    resources :quizzes, only: [:index, :edit, :update, :new, :create, :destroy]
     
     put 'game/:quiz_id/start' => 'game#start', as: :start_game
     put 'game/:quiz_id/close' => 'game#close', as: :close_game

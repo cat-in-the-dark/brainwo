@@ -8,8 +8,9 @@ class QuizzesController < ParticipantsController
   end
 
   def show
-    @game = GameService.new(Quiz.find(params[:id]))
+    @game = GameService.new(Quiz.started.find(params[:id]))
     @question = @game.current_question
+    @question_id = @question.id if @question
 
     stick_to_quiz @game.quiz
   rescue
@@ -28,7 +29,11 @@ class QuizzesController < ParticipantsController
       render json: {reload: false}
     end
   rescue
-    logger.info "RELOAD true + fail"
-    render json: {reload: true}
+    if @game.started?
+      logger.info "RELOAD false + fail"
+      render json: { reload: false }
+    else
+      render json: { reload: true }
+    end
   end
 end
