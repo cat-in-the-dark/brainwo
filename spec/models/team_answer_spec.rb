@@ -26,7 +26,7 @@ describe TeamAnswer do
 
   describe 'when is_right not presence' do
     before do
-      team_answer.team = nil
+      team_answer.is_right = nil
     end
     it { should_not be_valid }
   end

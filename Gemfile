@@ -1,10 +1,6 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
-# for rvm usage
-ruby '2.1.0'
-#ruby-gemset=brainwo
-
 gem 'rails', '4.0.4'
 gem 'thin'
 
@@ -21,7 +17,7 @@ gem 'devise'
 gem 'figaro'
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '~> 4.0.2'
 
 # Use twitter-bootstrap as frontend framework
 gem 'bootstrap-sass'
@@ -49,9 +45,6 @@ gem 'rails-assets-bootstrap-markdown'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby'
 
 group :development, :test do
   # Test frameworks
