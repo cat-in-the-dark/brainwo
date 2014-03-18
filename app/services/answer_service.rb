@@ -1,5 +1,5 @@
 class AnswerService
-  attr_reader :team, :question
+  attr_reader :team, :question, :answer
 
   def initialize(team, question)
     @team = team
@@ -8,11 +8,11 @@ class AnswerService
   end
 
   def correct?
-    @answer.is_correct
+    @answer.is_right
   end
 
   def update_status(status, answer = nil)
-    @answer.is_correct = status
+    @answer.is_right = status
     @answer.body = answer if answer
     @answer.save
   end
