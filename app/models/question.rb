@@ -2,13 +2,14 @@
 #
 # Table name: questions
 #
-#  id          :integer          not null, primary key
-#  title       :string(255)
-#  description :text
-#  answer      :text
-#  created_at  :datetime
-#  updated_at  :datetime
-#  quiz_id     :integer
+#  id         :integer          not null, primary key
+#  title      :string(255)
+#  core       :text
+#  answer     :text
+#  created_at :datetime
+#  updated_at :datetime
+#  quiz_id    :integer
+#  foreword   :string(255)
 #
 
 class Question < ActiveRecord::Base

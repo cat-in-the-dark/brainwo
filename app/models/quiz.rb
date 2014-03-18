@@ -5,7 +5,7 @@
 #  id                  :integer          not null, primary key
 #  name                :string(255)
 #  owner_id            :integer
-#  status              :string(255)
+#  status              :string(255)      default("moderating")
 #  created_at          :datetime
 #  updated_at          :datetime
 #  current_question_id :integer
