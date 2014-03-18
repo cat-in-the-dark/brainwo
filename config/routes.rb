@@ -1,6 +1,9 @@
 Brainwo::Application.routes.draw do
+  devise_for :owners
+  
   namespace :owner do
     root 'quizzes#index'
+    resources :teams, except: :show
     resources :questions
     resources :quizzes, only: [:index, :edit, :update, :new, :create, :destroy]
     
@@ -16,7 +19,7 @@ Brainwo::Application.routes.draw do
       post 'should_i_reload_page'
     end
   end
-  devise_for :owners
+  
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
