@@ -1,0 +1,20 @@
+h1 Rate teams
+h3= "Question #{@game.current_question.title}"
+=form_for(@teams_answers, url: owner_fill_teams_answers_path(quiz_id: @game.quiz.id)) do |f|
+  = render 'owner/layouts/error_messages', object: f.object
+  table.table
+    thead
+      tr
+        th Team
+        th Yep!
+        th Answer
+        th Victim
+    tbody
+      -f.object.answers.each do |answer|
+        tr
+          =f.fields_for "answers[#{answer.team.id}]", answer do |answer_form|
+            td= answer.team.name
+            td= answer_form.check_box :is_right, {}, true, false
+            td= answer_form.text_field :body
+            td
+  =f.submit 'Save', class: 'btn btn-primary'

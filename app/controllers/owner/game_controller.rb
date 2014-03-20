@@ -20,6 +20,31 @@ class Owner::GameController < OwnerController
     @question = @game.questions.find params[:question_id]
   end
 
+  def rate
+    if @game.current_question
+      @teams_answers = TeamsAnswersCollection.build(@game.teams, @game.current_question)
+    else
+      flash[:danger] = "Select question before"
+      redirect_to owner_game_path(quiz_id: @game.quiz.id)
+    end
+  end
+
+  def fill_teams_answers
+    if @game.current_question
+      @teams_answers = TeamsAnswersCollection.build(@game.teams, @game.current_question, answers_params)
+      
+      #render text: answers_params
+      if @teams_answers.save
+        redirect_to owner_game_path(quiz_id: @game.quiz.id)
+      else
+        render :rate
+      end
+    else
+      flash[:danger] = "Select question before"
+      redirect_to owner_game_path(quiz_id: @game.quiz.id)
+    end
+  end
+
   def set_question
     if @game.set_question params[:question_id]
       flash[:success] = "Question showed to participants: #{@game.current_question.title}"
@@ -34,5 +59,9 @@ class Owner::GameController < OwnerController
   def build_game
     quiz = quizzes.find params[:quiz_id]
     @game = GameService.new quiz
+  end
+
+  def answers_params
+    params.require(:teams_answers_collection)[:answers]
   end
 end

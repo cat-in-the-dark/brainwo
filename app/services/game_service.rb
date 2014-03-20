@@ -10,6 +10,10 @@ class GameService
     quiz.questions
   end
 
+  def teams
+    quiz.teams
+  end
+
   def current_question
     quiz.current_question
   end
