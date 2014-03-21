@@ -18,6 +18,15 @@ class GameService
     quiz.current_question
   end
 
+  def current_question?(question)
+    quiz.current_question == question
+  end
+
+  def close_current_question
+    quiz.current_question = nil
+    quiz.save
+  end
+
   def set_question(question_id)
     question = quiz.questions.find question_id
 
