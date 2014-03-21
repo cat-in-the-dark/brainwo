@@ -14,6 +14,7 @@ Brainwo::Application.routes.draw do
     get 'game/:quiz_id/set_question/:question_id' => 'game#set_question', as: :set_game_question
     get 'game/:quiz_id' => 'game#show', as: :game
     get 'game/:quiz_id/question/:question_id' => 'game#question', as: :game_question
+    get 'game/:quiz_id/rating' => 'game#rating', as: :game_rating
   end
   
   resources :quizzes, only: [:index, :show] do
