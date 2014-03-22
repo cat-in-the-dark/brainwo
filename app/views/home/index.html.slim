@@ -2,7 +2,10 @@
   h1
     | BrainWO 
     small Super service for quizing!
-  p= link_to 'Solve quiz', quizzes_path, class: 'btn btn-lg btn-success'
+  p 
+    =link_to 'Solve quiz', quizzes_path, class: 'btn btn-lg btn-success'
+    |  or 
+    small=link_to 'manage', [:owner, :root]
 .row.marketing
   .col-md-6
     h4 Easy to create quiz

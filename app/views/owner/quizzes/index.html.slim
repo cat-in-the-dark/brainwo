@@ -8,10 +8,13 @@ table.table.table-hover
       th= 'Name'
       th
       th
+      th
+      th
   tbody
     - @quizzes.each do |quiz|
       tr
-        td= link_to quiz.name, owner_game_path({quiz_id: quiz.id})
-        td= link_to 'Teams', [:owner, quiz, :teams], class: 'btn btn-info'
-        td= link_to 'Edit', edit_owner_quiz_path(quiz), class: 'btn btn-warning'
-        td= link_to 'Destroy', [:owner, quiz], method: :delete, class: 'btn btn-danger'
+        td= quiz.name
+        td= link_to 'Quizer', owner_game_path({quiz_id: quiz.id}), class: 'btn btn-info'
+        td= link_to 'Judjement', [:owner, quiz, :judgement], class: 'btn btn-info'
+        td= link_to 'Rating', owner_game_rating_path({quiz_id: quiz.id}), class: 'btn btn-info'
+        td= link_to 'Settings', [:owner, quiz], class: 'btn btn-warning'

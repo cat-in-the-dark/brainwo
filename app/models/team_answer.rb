@@ -12,7 +12,7 @@
 #
 
 class TeamAnswer < ActiveRecord::Base
-  belongs_to :team
+  belongs_to :team, inverse_of: :answers
   belongs_to :question
 
   validates :team_id, presence: true

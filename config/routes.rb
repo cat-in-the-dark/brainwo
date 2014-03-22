@@ -7,8 +7,13 @@ Brainwo::Application.routes.draw do
     resources :questions
     resources :quizzes do
       resources :teams
+      get 'judgement' => 'judgement#index'
+      get 'judgement/:team_id' => 'judgement#show'
+      post 'judgement/:team_id/hurt' => 'judgement#hurt'
+      post 'judgement/:team_id/toggle_status' => 'judgement#toggle_status'
     end
     
+
     get 'game/:quiz_id/rate' => 'game#rate', as: :game_rate
     post 'game/:quiz_id/fill_teams_answers' => 'game#fill_teams_answers', as: :fill_teams_answers
     put 'game/:quiz_id/start' => 'game#start', as: :start_game

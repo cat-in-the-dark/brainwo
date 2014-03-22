@@ -1,5 +1,5 @@
 h1 
-  | Teams in "#{@quiz.name}" quiz 
+  | Teams in "#{link_to @quiz.name, [:owner, @quiz]}" quiz 
   small=link_to 'New', new_owner_quiz_team_path(@quiz), class: 'btn btn-primary'
 table.table
   thead

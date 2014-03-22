@@ -1,0 +1,6 @@
+h1="#{@quiz.name}/settings"
+= link_to 'Teams', [:owner, @quiz, :teams], class: 'btn btn-info'
+hr
+= link_to 'Edit', edit_owner_quiz_path(@quiz), class: 'btn btn-warning'
+hr
+= link_to 'Destroy', [:owner, @quiz], method: :delete, class: 'btn btn-danger'

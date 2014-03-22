@@ -50,7 +50,7 @@ class Owner::TeamsController < OwnerController
   private
 
   def find_quiz
-    @quiz = Quiz.find params[:quiz_id]
+    @quiz = quizzes.find params[:quiz_id]
   end
 
   def team_params

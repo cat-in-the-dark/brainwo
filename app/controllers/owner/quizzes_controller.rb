@@ -11,6 +11,10 @@ class Owner::QuizzesController < OwnerController
     respond_with @quiz
   end
 
+  def show
+    @quiz = quizzes.find params[:id]
+  end
+
   def create
     @quiz = quizzes.build quiz_params
 
@@ -31,7 +35,7 @@ class Owner::QuizzesController < OwnerController
 
     if @quiz.update_attributes quiz_params
       flash[:success] = "Quiz #{@quiz.name} updated"
-      redirect_to owner_game_path({quiz_id: @quiz.id})
+      redirect_to [:owner, @quiz]
     else
       render :edit
     end
