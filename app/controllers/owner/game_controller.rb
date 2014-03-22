@@ -69,5 +69,7 @@ class Owner::GameController < OwnerController
 
   def answers_params
     params.require(:teams_answers_collection)[:answers]
+  rescue
+    nil
   end
 end

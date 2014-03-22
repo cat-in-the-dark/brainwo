@@ -4,8 +4,6 @@ h1= @game.quiz.name
 -else
   =link_to t('quiz.start'), owner_start_game_path({quiz_id: @game.quiz.id}), method: :put, class: 'btn btn-primary'
 
-=link_to 'Rating', owner_game_rating_path({quiz_id: @game.quiz.id}), class: 'btn btn-info'
-
 hr
 
 h3
