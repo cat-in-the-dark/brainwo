@@ -1,2 +1,17 @@
-h1 Owner::Teams#index
-p Find me in app/views/owner/teams/index.html.slim
+h1 
+  | Teams in "#{@quiz.name}" quiz 
+  small=link_to 'New', new_owner_quiz_team_path(@quiz), class: 'btn btn-primary'
+table.table
+  thead
+    tr
+      th '#'
+      th 'name'
+      th
+      th
+  tbody
+    - @teams.each do |team|
+      tr
+        td= team.id
+        td= team.name
+        td= link_to 'Edit', edit_owner_quiz_team_path(@quiz, team)
+        td= link_to 'Delete', [:owner, @quiz, team], method: :delete

@@ -5,7 +5,9 @@ Brainwo::Application.routes.draw do
     root 'quizzes#index'
     resources :teams, except: :show
     resources :questions
-    resources :quizzes, only: [:index, :edit, :update, :new, :create, :destroy]
+    resources :quizzes do
+      resources :teams
+    end
     
     get 'game/:quiz_id/rate' => 'game#rate', as: :game_rate
     post 'game/:quiz_id/fill_teams_answers' => 'game#fill_teams_answers', as: :fill_teams_answers

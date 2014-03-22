@@ -1,2 +1,7 @@
-h1 Owner::Teams#edit
-p Find me in app/views/owner/teams/edit.html.slim
+h1 Update team
+=form_for [:owner, @quiz, @team] do |f|
+  = render 'owner/layouts/error_messages', object: f.object
+  .form-group
+    =f.label :name
+    =f.text_field :name
+  =f.submit 'Update', class: 'btn btn-success'
