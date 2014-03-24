@@ -9,22 +9,13 @@ describe Team do
   it { should respond_to :participants }
   it { should respond_to :answers }
   it { should respond_to :questions }
+  it { should respond_to :quiz }
   it { should be_valid }
 
-  describe 'when name is already in use' do
-    let(:team_2) { FactoryGirl.build :team }
-    before do
-      team_2.name = team.name
-    end
+  it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:quiz) }
 
-    subject { team_2 }
-    it { should_not be_valid }
-  end
+  it { should ensure_length_of(:name).is_at_most(50) }
 
-  describe 'when name too long' do
-    before do
-      team.name = 'a' * 51
-    end
-     it { should_not be_valid }
-  end
+  #it { should validate_uniqueness_of(:name).case_insensitive.scoped_to(:quiz_id) }
 end

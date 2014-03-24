@@ -10,24 +10,7 @@ describe TeamAnswer do
 
   it { should be_valid }
 
-  describe 'when team not presence' do
-    before do
-      team_answer.team = nil
-    end
-    it { should_not be_valid }
-  end
-
-  describe 'when question not presence' do
-    before do
-      team_answer.question = nil
-    end
-    it { should_not be_valid }
-  end
-
-  describe 'when is_right not presence' do
-    before do
-      team_answer.is_right = nil
-    end
-    it { should_not be_valid }
-  end
+  it { should validate_presence_of(:team_id) }
+  it { should validate_presence_of(:question_id) }
+  #it { should validate_uniqueness_of(:team_id).scoped_to(:question_id) }
 end

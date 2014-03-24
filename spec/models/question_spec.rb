@@ -14,50 +14,14 @@ describe Question do
   it { should respond_to :teams }
   it { should be_valid }
 
-  describe 'when quiz is not presence' do
-    before do
-      question.quiz = nil
-    end
+  it { should validate_presence_of(:quiz) }
+  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:core) }
+  it { should validate_presence_of(:foreword) }
+  it { should validate_presence_of(:answer) }
 
-    it { should_not be_valid }
-  end
-
-  describe 'when title is not presence' do
-    before do
-      question.title = ''
-    end
-
-    it { should_not be_valid }
-  end
-
-  describe 'when core is not presence' do
-    before do
-      question.core = ''
-    end
-
-    it { should_not be_valid }
-  end
-
-  describe 'when foreword is not presence' do
-    before do
-      question.foreword = ''
-    end
-
-    it { should_not be_valid }
-  end
-
-  describe 'when answer is not presence' do
-    before do
-      question.answer = ''
-    end
-
-    it { should_not be_valid }
-  end
-
-  describe 'when title too long' do
-    before do
-      question.title = 'a' * 51
-    end
-    it { should_not be_valid }
-  end
+  it { should ensure_length_of(:title).is_at_most(50) }
+  it { should ensure_length_of(:foreword).is_at_most(5000) }
+  it { should ensure_length_of(:core).is_at_most(2000) }
+  it { should ensure_length_of(:answer).is_at_most(2000) }
 end
