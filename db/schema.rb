@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324152021) do
+ActiveRecord::Schema.define(version: 20140325070034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140324152021) do
     t.datetime "updated_at"
     t.integer  "quiz_id"
     t.text     "foreword",   default: "", null: false
+    t.integer  "pain_count", default: 0,  null: false
   end
 
   create_table "quizzes", force: true do |t|
@@ -58,6 +59,18 @@ ActiveRecord::Schema.define(version: 20140324152021) do
   end
 
   add_index "quizzes", ["owner_id"], name: "index_quizzes_on_owner_id", using: :btree
+
+  create_table "sufferings", force: true do |t|
+    t.integer  "participant_id"
+    t.integer  "question_id"
+    t.integer  "pain_count",     default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sufferings", ["participant_id", "question_id"], name: "index_sufferings_on_participant_id_and_question_id", unique: true, using: :btree
+  add_index "sufferings", ["participant_id"], name: "index_sufferings_on_participant_id", using: :btree
+  add_index "sufferings", ["question_id"], name: "index_sufferings_on_question_id", using: :btree
 
   create_table "team_answers", force: true do |t|
     t.integer  "team_id"
@@ -77,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140324152021) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "quiz_id"
+    t.integer  "victim_id"
   end
 
   add_index "teams", ["name"], name: "index_teams_on_name", unique: true, using: :btree
