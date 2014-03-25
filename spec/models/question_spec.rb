@@ -12,6 +12,8 @@ describe Question do
   it { should respond_to :quiz }
   it { should respond_to :team_answers }
   it { should respond_to :teams }
+  it { should respond_to :pain_count }
+  it { should respond_to :sufferings }
   it { should be_valid }
 
   it { should validate_presence_of(:quiz) }
@@ -19,6 +21,7 @@ describe Question do
   it { should validate_presence_of(:core) }
   it { should validate_presence_of(:foreword) }
   it { should validate_presence_of(:answer) }
+  it { should validate_presence_of(:pain_count) }
 
   it { should ensure_length_of(:title).is_at_most(50) }
   it { should ensure_length_of(:foreword).is_at_most(5000) }

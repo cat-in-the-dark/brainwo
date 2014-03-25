@@ -13,6 +13,7 @@
 #
 
 class Question < ActiveRecord::Base
+  has_many :sufferings, class_name: Suffering
   has_many :team_answers, class_name: TeamAnswer
   has_many :teams, through: :team_answers
   belongs_to :quiz
@@ -21,5 +22,6 @@ class Question < ActiveRecord::Base
   validates :core, presence: true, length: { maximum: 2000 }
   validates :foreword, presence: true, length: { maximum: 5000 }
   validates :answer, presence: true, length: { maximum: 2000 }
+  validates :pain_count, presence: true
   validates :quiz, presence: true
 end

@@ -14,6 +14,7 @@ class Team < ActiveRecord::Base
   has_many :answers, class_name: TeamAnswer, inverse_of: :team
   has_many :questions, through: :answers
   belongs_to :quiz
+  belongs_to :victim, class_name: Participant
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :quiz, presence: true

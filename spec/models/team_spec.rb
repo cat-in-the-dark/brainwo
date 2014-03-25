@@ -10,6 +10,7 @@ describe Team do
   it { should respond_to :answers }
   it { should respond_to :questions }
   it { should respond_to :quiz }
+  it { should respond_to :victim }
   it { should be_valid }
 
   it { should validate_presence_of(:name) }

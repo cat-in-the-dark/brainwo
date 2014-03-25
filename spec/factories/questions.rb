@@ -6,6 +6,7 @@ FactoryGirl.define do
     core "Participants see this core"
     foreword "Only owner see this and read for participants"
     answer "MyText"
+    pain_count 50
     quiz
   end
 end
