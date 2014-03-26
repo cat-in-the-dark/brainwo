@@ -8,7 +8,7 @@ Brainwo::Application.routes.draw do
     resources :quizzes do
       resources :teams
       get 'judgement' => 'judgement#index'
-      get 'judgement/:team_id' => 'judgement#show'
+      get 'judgement/:team_id' => 'judgement#show', as: :judgement_team
       post 'judgement/:team_id/hurt' => 'judgement#hurt'
       post 'judgement/:team_id/toggle_status' => 'judgement#toggle_status'
     end

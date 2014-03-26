@@ -6,11 +6,11 @@ class Owner::JudgementController < OwnerController
   end
 
   def show
-    @team = @game.teams.find_by(id: params[:tema_id])
+    @team = @game.teams.find_by(id: params[:team_id])
   end
 
   def hurt
-    @team = @game.teams.find_by(id: params[:tema_id])
+    @team = @game.teams.find_by(id: params[:team_id])
     #TODO call hurting service
     render json: {status: :accepted, pain: 0 }
   end
