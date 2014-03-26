@@ -15,5 +15,5 @@
 //= require highlightjs
 //= require bootstrap-markdown
 //= require turbolinks
-// require bootstrap
+//= require bootstrap
 //= require_tree .
