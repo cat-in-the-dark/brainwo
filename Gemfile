@@ -2,13 +2,21 @@ source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
 gem 'rails', '4.0.4'
+
+# ruby server
 gem 'thin'
+
+# coffeescript->js compiler
+gem 'therubyracer', platforms: :ruby
 
 # Use postgresql as the database for Active Record
 gem 'pg'
 
 # Annotate models 
 gem 'annotate'
+
+# View decorator for models
+gem 'draper', '~> 1.3'
 
 # Flexible authentication solution for Rails with Warden
 gem 'devise'
@@ -21,6 +29,11 @@ gem 'sass-rails', '~> 4.0.2'
 
 # Use twitter-bootstrap as frontend framework
 gem 'bootstrap-sass'
+gem 'bootstrap_helper', '~> 4.2.3'
+
+# pagination
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

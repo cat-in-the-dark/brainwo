@@ -14,6 +14,7 @@ class Owner::GameController < OwnerController
   end
 
   def show
+    @questions = PaginatingDecorator.new(@game.quiz.questions.paginate(page: params[:page], per_page: 20))
   end
 
   def rating

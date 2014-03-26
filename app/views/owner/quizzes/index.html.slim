@@ -1,20 +1,7 @@
-h1 
-  | Quizzes
-  small= link_to 'New', new_owner_quiz_path, class: 'btn btn-success'
+h1 Quizzes
 hr
-table.table.table-hover
-  thead
-    tr
-      th= 'Name'
-      th
-      th
-      th
-      th
-  tbody
-    - @quizzes.each do |quiz|
-      tr
-        td= quiz.name
-        td= link_to 'Quizer', owner_game_path({quiz_id: quiz.id}), class: 'btn btn-info'
-        td= link_to 'Judjement', [:owner, quiz, :judgement], class: 'btn btn-info'
-        td= link_to 'Rating', owner_game_rating_path({quiz_id: quiz.id}), class: 'btn btn-info'
-        td= link_to 'Settings', [:owner, quiz], class: 'btn btn-warning'
+.row
+  .col-md-9
+  .col-md-3
+    = link_to 'New', new_owner_quiz_path, class: 'btn btn-primary btn-block'
+= render 'quizzes'

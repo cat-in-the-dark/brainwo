@@ -1,44 +1,14 @@
 h1= @game.quiz.name
--if @game.started?
-  =link_to t('quiz.close'), owner_close_game_path({quiz_id: @game.quiz.id}), method: :put, class: 'btn btn-warning'
--else
-  =link_to t('quiz.start'), owner_start_game_path({quiz_id: @game.quiz.id}), method: :put, class: 'btn btn-primary'
-
-hr
+.row
+  .col-md-9
+  .col-md-3
+    -if @game.started?
+      =link_to t('quiz.close'), owner_close_game_path({quiz_id: @game.quiz.id}), method: :put, class: 'btn btn-warning btn-block'
+    -else
+      =link_to t('quiz.start'), owner_start_game_path({quiz_id: @game.quiz.id}), method: :put, class: 'btn btn-primary btn-block'
 
 h3
   | Questions
   span= link_to 'New', new_owner_question_path({quiz_id: @game.quiz.id}), class: 'btn btn-success', :'data-no-turbolink'=> ''
-table.table.table-hover
-  thead
-    tr
-      th= '#'
-      th= 'Title'
-      th= 'Tags'
-      th= 'Painful'
-      th= 'Author'
-      th
-      th
-      th
-  tbody
-    - @game.quiz.questions.each do |question|
-      - if @game.current_question && @game.current_question.id == question.id
-        tr.success
-          td= question.id
-          td= question.title
-          td
-          td
-          td
-          td= link_to 'Edit', edit_owner_question_path(question), class: 'btn btn-warning', :'data-no-turbolink'=> ''
-          td= link_to 'Delete', owner_question_path(question), method: :delete, class: 'btn btn-danger'
-          td= link_to 'Preview', owner_game_question_path({quiz_id: @game.quiz.id, question_id: question.id}), class: 'btn btn-success'
-      - else
-        tr
-          td= question.id
-          td= question.title
-          td
-          td
-          td
-          td= link_to 'Edit', edit_owner_question_path(question), class: 'btn btn-warning',  :'data-no-turbolink'=> ''
-          td= link_to 'Delete', owner_question_path(question), method: :delete, class: 'btn btn-danger'
-          td= link_to 'Preview', owner_game_question_path({quiz_id: @game.quiz.id, question_id: question.id}), class: 'btn btn-success'      
+= render 'questions'
+= will_paginate @questions, renderer: BootstrapPagination::Rails
