@@ -18,7 +18,7 @@ class Owner::JudgementController < OwnerController
   def toggle_status
     @team = @game.teams.find_by(id: params[:team_id])
     #TODO call hurnig service and kill team or make alive
-    render json: { status: :updated, life_status: @team.status }
+    render json: { status: :updated, life_status: "@team.status" }
   end
 
   private
