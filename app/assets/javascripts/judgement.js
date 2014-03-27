@@ -38,6 +38,13 @@ $(function(){
       data: {},
       success: function(res) {
         console.log(res);
+        if (res.life_status == 'alive') {
+          $('#js-kill-action').toggleClass('btn-success btn-danger');
+          $('#js-kill-action').text('Kill');
+        } else if (res.life_status == 'killed') {
+          $('#js-kill-action').toggleClass('btn-danger btn-success');
+          $('#js-kill-action').text('Reanimate');
+        }
       }
     });
     console.log(event);
