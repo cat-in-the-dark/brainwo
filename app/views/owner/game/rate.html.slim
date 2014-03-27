@@ -16,5 +16,5 @@ h3= "Question #{@game.current_question.title}"
             td= answer.team.name
             td= answer_form.check_box :is_right, {}, true, false
             td= answer_form.text_field :body
-            td
+            td= answer.team.victim.decorate.full_name unless answer.team.victim.nil?
   =f.submit 'Save rating and close question', class: 'btn btn-primary'

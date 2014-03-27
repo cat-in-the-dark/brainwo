@@ -10,6 +10,8 @@
 #
 
 class Team < ActiveRecord::Base
+  STATUSES = %w(alive killed)
+
   has_many :participants
   has_many :answers, class_name: TeamAnswer, inverse_of: :team
   has_many :questions, through: :answers
@@ -20,4 +22,12 @@ class Team < ActiveRecord::Base
   validates :quiz, presence: true
 
   scope :with_rating, -> { includes(:answers).references(:answers).order(:created_at) }
+
+  def toggle_status!
+    if self.status.eql?('alive')
+      self.update_attribute :status, 'killed'
+    else
+      self.update_attribute :status, 'alive'
+    end
+  end
 end
