@@ -1,4 +1,9 @@
 $(function(){
+  function updateProgress(current, total) {
+    percentage = Math.round(current * 100 / total) + '%';
+    $('#pain-pbar').css('width', percentage);
+    $('#pain-pbar').text(percentage);
+  }
   $('#js-increment-five-action').click(function(event) {
     event.preventDefault();
     $self = $(this);
@@ -9,7 +14,7 @@ $(function(){
       dataType: 'json',
       data: {'pain_amount': 5},
       success: function(res) {
-        console.log(res)
+        updateProgress(res.pain, res.all_pain);
       }
     });
   });
@@ -23,7 +28,7 @@ $(function(){
       dataType: 'json',
       data: {'pain_amount': 1},
       success: function(res) {
-        console.log(res);
+        updateProgress(res.pain, res.all_pain)
       }
     });
   });
