@@ -27,7 +27,7 @@ class Owner::JudgementController < OwnerController
   private
 
   def build_game
-    quiz = quizzes.find params[:quiz_id]
+    quiz = quizzes.with_teams.find params[:quiz_id]
     @game = GameService.new quiz
   end
 end

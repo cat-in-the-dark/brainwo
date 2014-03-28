@@ -2,8 +2,8 @@ h1
   | #{@team.name} 
   small @team.victim.name
 .progress
-  .progress-bar role="progressbar" style="width: 60%;" id='pain-pbar'
-    | 60%
+  .progress-bar role="progressbar" style="width: 0%;" id='pain-pbar'
+    | 0%
 hr
 .row
   .col-sm-4
@@ -20,5 +20,5 @@ hr
 .row
   .col-sm-4
   .col-sm-4
-    = killer_button(@team, @game)
+    = killer_button(@team.decorate, @game)
   .col-sm-4

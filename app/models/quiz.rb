@@ -22,6 +22,6 @@ class Quiz < ActiveRecord::Base
   validates :owner, presence: true
   validates :status, presence: true, inclusion: {in: GameService::STATUSES }
 
-
+  scope :with_teams, -> { includes(:teams).references(:teams) }
   scope :started, -> { where(status: 'started') }
 end
