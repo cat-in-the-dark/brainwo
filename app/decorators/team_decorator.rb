@@ -8,4 +8,12 @@ class TeamDecorator < Draper::Decorator
   def alive?
     object.status == 'alive'
   end
+
+  def victim_name
+    if object.victim
+      object.victim.name
+    else
+      ''
+    end
+  end
 end

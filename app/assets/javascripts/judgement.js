@@ -26,7 +26,7 @@ $(function(){
       dataType: 'json',
       data: {'pain_amount': 1},
       success: function(res) {
-        updateProgress(res.pain, res.all_pain)
+        updateProgress(res.pain, res.all_pain);
       }
     });
   });

@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :team do
     sequence(:name) { |n| "SuperTeam_#{n}" }
+    status 'alive'
     victim nil
     quiz
   end

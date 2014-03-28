@@ -1,26 +1,32 @@
 class Owner::JudgementController < OwnerController
   before_action :build_game
+  before_action :check_game_status, except: [:index]
 
   def index
     @teams = @game.teams
   end
 
   def show
-    @team = @game.teams.find_by(id: params[:team_id])
+    @team = @game.teams.find(params[:team_id]).decorate
+    @ps = PainService.new(@team, @game)
   end
 
   def hurt
     @team = @game.teams.find_by(id: params[:team_id])
-    #TODO call hurting service
-    all_pain = rand(100)
-    pain = rand(all_pain)
-    render json: { status: :accepted, pain: pain, all_pain: all_pain }
+    ps = PainService.new(@team, @game)
+
+    if ps.hurt!(params[:pain_amount].to_i)
+      render json: { status: :accepted, pain: ps.pain_count, all_pain: ps.all_pain_count }
+    else
+      render json: { status: :not_accepted, pain: ps.pain_count, all_pain: ps.all_pain_count, msg: "victim not set" }
+    end
   end
 
   def toggle_status
     @team = @game.teams.find_by(id: params[:team_id])
-    @team.toggle_status!
-    #TODO call hurnig service and kill team or make alive
+    ps = PainService.new(@team, @game)
+    ps.kill_or_reanimate_team!
+    
     render json: { status: :updated, life_status: @team.status }
   end
 
@@ -29,5 +35,9 @@ class Owner::JudgementController < OwnerController
   def build_game
     quiz = quizzes.with_teams.find params[:quiz_id]
     @game = GameService.new quiz
+  end
+
+  def check_game_status
+    redirect_to [:owner, :quiz, :judgement] if @game.current_question.nil?
   end
 end

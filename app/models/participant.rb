@@ -18,4 +18,8 @@ class Participant < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 20 }
   validates :surname, presence: true, length: { maximum: 30 }
   validates_uniqueness_of :name, scope: :surname
+
+  def pain_count
+    sufferings.sum(:pain_count)
+  end
 end

@@ -2,6 +2,6 @@ h1 Select team
 hr
 .list-group
   - @teams.each do |team|
-    = link_to owner_quiz_judgement_team_path({quiz_id: @game.quiz.id, team_id: team.id}), class: 'list-group-item' do
+    = link_to owner_quiz_judgement_team_path({quiz_id: @game.quiz.id, team_id: team.id}), :'data-no-turbolink'=> '', class: 'list-group-item' do
       h4.list-group-item-heading= team.name
       p.list-group-item-text team.victim.name

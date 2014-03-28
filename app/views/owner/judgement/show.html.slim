@@ -1,9 +1,9 @@
 h1
   | #{@team.name} 
-  small @team.victim.name
+  small #{@team.victim_name}
 .progress
-  .progress-bar role="progressbar" style="width: 0%;" id='pain-pbar'
-    | 0%
+  .progress-bar role="progressbar" style="width: #{@ps.pain_count_percent}%;" id='pain-pbar'
+    | #{@ps.pain_count_percent}%
 hr
 .row
   .col-sm-4

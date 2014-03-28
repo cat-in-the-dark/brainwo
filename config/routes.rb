@@ -10,7 +10,7 @@ Brainwo::Application.routes.draw do
       get 'judgement' => 'judgement#index'
       get 'judgement/:team_id' => 'judgement#show', as: :judgement_team
       post 'judgement/:team_id/hurt' => 'judgement#hurt', as: :judgement_hurt
-      post 'judgement/:team_id/toggle_status' => 'judgement#toggle_status', as: :judgement_kill
+      post 'judgement/:team_id/toggle_status' => 'judgement#toggle_status', as: :judgement_toggle_status
     end
     
 
