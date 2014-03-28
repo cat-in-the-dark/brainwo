@@ -14,6 +14,16 @@ class GameService
     quiz.teams
   end
 
+  def team_fail?(team)
+    answer = team.answers.find_by(question: current_question)
+    
+    if answer && !answer.is_right
+      true
+    else
+      false
+    end
+  end
+
   def current_question
     quiz.current_question
   end
@@ -54,5 +64,9 @@ class GameService
 
   def closed?
     quiz.status == 'closed'
+  end
+
+  def wait_for_violence?
+    current_question && current_question.wait_checking?
   end
 end

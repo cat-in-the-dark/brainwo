@@ -6,4 +6,12 @@ module Owner::JudgementHelper
       link_to 'Reanimate', '#', class: 'btn btn-success btn-block btn-lg', id: 'js-kill-action', data: {url: owner_quiz_judgement_toggle_status_url({team_id: team.id, quiz_id: game.quiz.id})}      
     end
   end
+
+  def team_class(team)
+    if team.victim && @game.team_fail?(team)
+      'list-group-item-danger'
+    else
+      'list-group-item-success'
+    end
+  end
 end

@@ -24,4 +24,9 @@ class Question < ActiveRecord::Base
   validates :answer, presence: true, length: { maximum: 2000 }
   validates :pain_count, presence: true
   validates :quiz, presence: true
+
+  def wait_checking?
+    #TODO - questions can't know that game is in pain-or-checking mode!!!
+    true
+  end
 end

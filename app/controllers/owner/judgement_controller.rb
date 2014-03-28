@@ -3,7 +3,7 @@ class Owner::JudgementController < OwnerController
   before_action :check_game_status, except: [:index]
 
   def index
-    @teams = @game.teams
+    @teams = @game.teams.decorate
   end
 
   def show
