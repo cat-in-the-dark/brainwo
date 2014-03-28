@@ -20,5 +20,5 @@ hr
 .row
   .col-sm-4
   .col-sm-4
-    = link_to 'Kill', '#', class: 'btn btn-danger btn-block btn-lg', id: 'js-kill-action', data: {url: owner_quiz_judgement_kill_url({team_id: @team.id, quiz_id: @game.quiz.id})}
+    = killer_button(@team, @game)
   .col-sm-4

@@ -30,4 +30,12 @@ class Team < ActiveRecord::Base
       self.update_attribute :status, 'alive'
     end
   end
+
+  def killed?
+    status == 'killed'
+  end
+
+  def alive?
+    status == 'alive'
+  end
 end
