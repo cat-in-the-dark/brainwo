@@ -1,5 +1,5 @@
 =link_to 'Back to quiz', owner_game_path({quiz_id: @question.quiz.id})
-=link_to 'Edit', edit_owner_question_path(@question), class: 'btn btn-warning'
+=link_to 'Edit', edit_owner_question_path(@question), class: 'btn btn-warning', :'data-no-turbolink'=> ''
 =link_to 'Delete', owner_question_path(@question), method: :delete, class: 'btn btn-danger'
 hr
 =markdown @question.foreword
