@@ -16,4 +16,10 @@ class TeamDecorator < Draper::Decorator
       ''
     end
   end
+
+  def is_right_for?(question)
+    answer = object.answers.find_by(question: question)
+    return true if answer && answer.is_right?
+    false
+  end
 end

@@ -18,8 +18,9 @@ class Owner::GameController < OwnerController
   end
 
   def rating
-    @quiz = Quiz.find params[:quiz_id]
-    @teams = @quiz.teams.with_rating
+    @quiz = @game.quiz
+    @questions = @game.questions
+    @teams = @quiz.teams.with_rating.decorate
   end
 
 

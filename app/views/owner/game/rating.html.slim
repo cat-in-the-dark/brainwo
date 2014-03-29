@@ -1,2 +1,12 @@
-- @teams.each do |team|
-  p=team.answers.map(&:is_right)
+table.table
+  thead
+    tr
+      th Team
+      - @questions.each do |question|
+        th= question.id
+  tbody
+    - @teams.each do |team|
+      tr
+        td= team.name
+        - @questions.each do |question|
+          td= team.is_right_for?(question)
