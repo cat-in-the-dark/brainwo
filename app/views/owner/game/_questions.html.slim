@@ -12,23 +12,8 @@ table.table.table-hover.question-table
     - @questions.each do |question|
       - if @game.current_question && @game.current_question.id == question.id
         tr.question-row.success
-          td= question.id
-          td= question.title
-          td
-          td
-          td
-          td = link_to 'Preview', owner_game_question_path({quiz_id: @game.quiz.id, question_id: question.id}), class: 'btn btn-success btn-block'
-          td.actions
-            = link_to 'Edit', edit_owner_question_path(question), class: 'btn btn-warning', :'data-no-turbolink'=> ''
-            = link_to 'Delete', owner_question_path(question), method: :delete, class: 'btn btn-danger'
+          = render 'question', question: question  
       - else
         tr.question-row
-          td= question.id
-          td= question.title
-          td
-          td= question.pain_count
-          td
-          td = link_to 'Preview', owner_game_question_path({quiz_id: @game.quiz.id, question_id: question.id}), class: 'btn btn-success btn-block'      
-          td.actions
-            = link_to 'Edit', edit_owner_question_path(question), class: 'btn btn-warning',  :'data-no-turbolink'=> ''
-            = link_to 'Delete', owner_question_path(question), method: :delete, class: 'btn btn-danger'
+          = render 'question', question: question
+         

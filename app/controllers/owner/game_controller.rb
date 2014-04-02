@@ -40,7 +40,8 @@ class Owner::GameController < OwnerController
   def fill_teams_answers
     if @game.current_question
       @teams_answers = TeamsAnswersCollection.build(@game.teams, @game.current_question, answers_params)
-    
+      @game.current_question.update_attributes question_params
+
       if @teams_answers.save
         @game.close_current_question
         redirect_to owner_game_path(quiz_id: @game.quiz.id)
@@ -73,5 +74,9 @@ class Owner::GameController < OwnerController
     params.require(:teams_answers_collection)[:answers]
   rescue
     nil
+  end
+
+  def question_params
+    params.require(:teams_answers_collection).permit(:question)
   end
 end

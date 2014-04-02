@@ -2,6 +2,10 @@ h1 Rate teams
 h3= "Question #{@game.current_question.title}"
 =form_for(@teams_answers, url: owner_fill_teams_answers_path(quiz_id: @game.quiz.id)) do |f|
   = render 'owner/layouts/error_messages', object: f.object
+  = f.fields_for 'question', @game.current_question do |question_form|
+    .form-group
+      = question_form.label :pain_count
+      = question_form.number_field :pain_count, class: 'form-control'
   table.table
     thead
       tr
