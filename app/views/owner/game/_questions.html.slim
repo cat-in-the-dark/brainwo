@@ -10,10 +10,6 @@ table.table.table-hover.question-table
       th
   tbody
     - @questions.each do |question|
-      - if @game.current_question && @game.current_question.id == question.id
-        tr.question-row.success
-          = render 'question', question: question  
-      - else
-        tr.question-row
-          = render 'question', question: question
+      tr.question-row class="#{question_klass(@game, question)}"
+        = render 'question', question: question  
          

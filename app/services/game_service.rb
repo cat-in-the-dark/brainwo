@@ -33,6 +33,7 @@ class GameService
   end
 
   def close_current_question
+    quiz.current_question.make_used
     quiz.current_question = nil
     quiz.save
   end

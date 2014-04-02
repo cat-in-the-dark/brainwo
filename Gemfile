@@ -12,6 +12,8 @@ gem 'therubyracer', platforms: :ruby
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+gem 'state_machine'
+
 # Annotate models 
 gem 'annotate'
 

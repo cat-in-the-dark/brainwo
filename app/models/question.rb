@@ -25,6 +25,16 @@ class Question < ActiveRecord::Base
   validates :pain_count, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :quiz, presence: true
 
+  state_machine initial: :unused do
+    event :make_used do 
+      transition [:punishment, :unused] => :used
+    end
+
+    event :punish do
+      transition unused: :punishment
+    end
+  end 
+
   def wait_checking?
     #TODO - questions can't know that game is in pain-or-checking mode!!!
     true

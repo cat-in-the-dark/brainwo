@@ -14,6 +14,7 @@ describe Question do
   it { should respond_to :teams }
   it { should respond_to :pain_count }
   it { should respond_to :sufferings }
+  it { should respond_to :state }
   it { should be_valid }
 
   it { should validate_presence_of(:quiz) }
