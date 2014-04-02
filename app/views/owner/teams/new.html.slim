@@ -1,7 +1,2 @@
 h1 Create team
-=form_for [:owner, @quiz, @team] do |f|
-  = render 'owner/layouts/error_messages', object: f.object
-  .form-group
-    =f.label :name
-    =f.text_field :name
-  =f.submit 'Save', class: 'btn btn-success'
+= render 'form'

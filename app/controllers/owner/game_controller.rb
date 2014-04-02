@@ -38,10 +38,13 @@ class Owner::GameController < OwnerController
   end
 
   def fill_teams_answers
+    # WTF, plz remove this hell, make service, really!!!
     if @game.current_question
       @teams_answers = TeamsAnswersCollection.build(@game.teams, @game.current_question, answers_params)
-      @game.current_question.update_attributes question_params
+      @victims = TeamsVictimsCollection.new(@game.teams, victims_params)
 
+      @game.current_question.update_attributes question_params
+      @victims.save
       if @teams_answers.save
         @game.close_current_question
         redirect_to owner_game_path(quiz_id: @game.quiz.id)
@@ -78,5 +81,11 @@ class Owner::GameController < OwnerController
 
   def question_params
     params.require(:teams_answers_collection).permit(:question)
+  end
+
+  def victims_params
+    params.require(:teams_answers_collection)[:victims]
+  rescue
+    nil
   end
 end

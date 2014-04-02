@@ -1,8 +1,6 @@
 h1= @game.quiz.name
 .row
-  .col-md-6
-  .col-md-3
-    = link_to 'Set victims', '#', class: 'btn btn-info btn-block'
+  .col-md-9
   .col-md-3
     -if @game.started?
       =link_to t('quiz.close'), owner_close_game_path({quiz_id: @game.quiz.id}), method: :put, class: 'btn btn-warning btn-block'
