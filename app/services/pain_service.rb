@@ -20,7 +20,11 @@ class PainService
 
     suffer = Suffering.find_or_create_by(participant: team.victim, question: game.current_question)
 
-    suffer.update_attribute(:pain_count, suffer.pain_count + hurt_count)
+    if (suffer.pain_count + hurt_count >= all_pain_count)
+      suffer.update_attribute(:pain_count, all_pain_count)  
+    else
+      suffer.update_attribute(:pain_count, suffer.pain_count + hurt_count)
+    end
     true
   end
 
