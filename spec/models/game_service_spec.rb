@@ -13,6 +13,8 @@ describe GameService do
   it { should respond_to :set_question }
   it { should respond_to :quiz }
   it { should respond_to :questions }
+  it { should respond_to :need_punishment? }
+  it { should respond_to :start_punishment }
 
   describe 'when start game' do
     before do

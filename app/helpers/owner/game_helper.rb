@@ -8,8 +8,8 @@ module Owner::GameHelper
   end
 
   def question_klass(game, question)
+    return 'warning' if question.punishment? 
     return 'success' if game.current_question?(question)
     return 'info' if question.used?
-    return 'warning' if question.punishment? 
   end
 end

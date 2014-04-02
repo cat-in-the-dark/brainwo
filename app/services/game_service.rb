@@ -24,6 +24,21 @@ class GameService
     end
   end
 
+  def need_punishment?
+    if current_question
+      Rails.logger.info "PUNISHMENT: #{current_question.pain_count}"
+      current_question.reload.pain_count > 0
+    else
+      false
+    end
+  end
+
+  def start_punishment
+    if current_question
+      current_question.start_punishment
+    end 
+  end
+
   def current_question
     quiz.current_question
   end

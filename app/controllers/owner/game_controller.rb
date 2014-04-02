@@ -30,6 +30,11 @@ class Owner::GameController < OwnerController
     end
   end
 
+  def stop_punishment
+    #TODO
+    redirect_to owner_game_path(quiz_id: @game.quiz.id)
+  end
+
   def fill_teams_answers
     # WTF, plz remove this hell, make service, really!!!
     if @game.current_question
@@ -37,10 +42,17 @@ class Owner::GameController < OwnerController
       @victims = TeamsVictimsCollection.new(@game.teams, victims_params)
 
       @game.current_question.update_attributes question_params
+      logger.info question_params
+      logger.info "PAIN: #{@game.current_question.reload.pain_count}"
       @victims.save
       if @teams_answers.save
-        @game.close_current_question
-        redirect_to owner_game_path(quiz_id: @game.quiz.id)
+        if @game.need_punishment?
+          @game.start_punishment
+          redirect_to owner_game_question_path({quiz_id: @game.quiz.id, question_id: @game.current_question.id})
+        else  
+          @game.close_current_question
+          redirect_to owner_game_path(quiz_id: @game.quiz.id)
+        end
       else
         render :rate
       end
@@ -73,7 +85,7 @@ class Owner::GameController < OwnerController
   end
 
   def question_params
-    params.require(:teams_answers_collection).permit(:question)
+    params.require(:teams_answers_collection)[:question].permit(:pain_count)
   end
 
   def victims_params

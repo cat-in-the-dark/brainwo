@@ -30,8 +30,8 @@ class Question < ActiveRecord::Base
       transition [:punishment, :unused] => :used
     end
 
-    event :punish do
-      transition unused: :punishment
+    event :start_punishment do
+      transition [:used, :unused] => :punishment
     end
   end 
 
