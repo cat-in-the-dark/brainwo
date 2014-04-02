@@ -57,6 +57,6 @@ class Owner::QuestionsController < OwnerController
   private
 
   def question_params
-    params.require(:question).permit(:title, :foreword, :core, :answer)
+    params.require(:question).permit(:title, :foreword, :core, :answer, :pain_count)
   end
 end

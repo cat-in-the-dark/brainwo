@@ -26,7 +26,7 @@ table.table.table-hover.question-table
           td= question.id
           td= question.title
           td
-          td
+          td= question.pain_count
           td
           td = link_to 'Preview', owner_game_question_path({quiz_id: @game.quiz.id, question_id: question.id}), class: 'btn btn-success btn-block'      
           td.actions

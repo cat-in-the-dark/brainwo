@@ -22,7 +22,7 @@ class Question < ActiveRecord::Base
   validates :core, presence: true, length: { maximum: 2000 }
   validates :foreword, presence: true, length: { maximum: 5000 }
   validates :answer, presence: true, length: { maximum: 2000 }
-  validates :pain_count, presence: true
+  validates :pain_count, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :quiz, presence: true
 
   def wait_checking?

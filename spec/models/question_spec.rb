@@ -23,6 +23,8 @@ describe Question do
   it { should validate_presence_of(:answer) }
   it { should validate_presence_of(:pain_count) }
 
+  it { should validate_numericality_of(:pain_count).only_integer.is_greater_than_or_equal_to(0) }
+
   it { should ensure_length_of(:title).is_at_most(50) }
   it { should ensure_length_of(:foreword).is_at_most(5000) }
   it { should ensure_length_of(:core).is_at_most(2000) }
