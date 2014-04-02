@@ -17,13 +17,6 @@ class Owner::GameController < OwnerController
     @questions = PaginatingDecorator.new(@game.quiz.questions.paginate(page: params[:page], per_page: 20))
   end
 
-  def rating
-    @quiz = @game.quiz
-    @questions = @game.questions
-    @teams = @quiz.teams.with_rating.decorate
-  end
-
-
   def question
     @question = @game.questions.find params[:question_id]
   end
