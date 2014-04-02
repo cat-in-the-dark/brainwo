@@ -1,2 +1,7 @@
-h1 Owner::Results#punishment
-p Find me in app/views/owner/results/punishment.html.slim
+- @teams.each do |team|
+  div
+    = team.name
+    - if team.is_right_for?(@game.current_question)
+      = 100
+    - else
+      = team.pain_count(@game.current_question)

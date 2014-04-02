@@ -11,6 +11,7 @@ class Owner::ResultsController < OwnerController
   end
 
   def punishment
+    @teams = @game.teams.decorate
   end
 
   private

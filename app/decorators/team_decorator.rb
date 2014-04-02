@@ -17,7 +17,17 @@ class TeamDecorator < Draper::Decorator
     end
   end
 
+  def pain_count(question)
+    if object.victim && question 
+      suffer = Suffering.find_by(participant: object.victim, question: question)
+      return suffer.pain_count unless suffer.nil?
+    end
+    0
+  end
+
   def is_right_for?(question)
+    return false if question.nil?
+    
     answer = object.answers.find_by(question: question)
     return true if answer && answer.is_right?
     false
