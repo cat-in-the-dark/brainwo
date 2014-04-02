@@ -25,6 +25,10 @@ class TeamDecorator < Draper::Decorator
     0
   end
 
+  def all_pain_count
+    object.participants.includes(:sufferings).references(:sufferings).sum('sufferings.pain_count')
+  end
+
   def is_right_for?(question)
     return false if question.nil?
     

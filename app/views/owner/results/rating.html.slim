@@ -4,9 +4,11 @@ table.table
       th Team
       - @questions.each do |question|
         th= question.id
+      th Pain
   tbody
     - @teams.each do |team|
       tr
         td= team.name
         - @questions.each do |question|
           td= team.is_right_for?(question)
+        td= team.all_pain_count
