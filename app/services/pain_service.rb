@@ -16,7 +16,8 @@ class PainService
 
   def hurt!(hurt_count)
     return false if hurt_count < 0
-    return false if team.victim.nil? || game.current_question.nil?
+    return false if team.victim.nil?
+    return false unless game.in_punishment_mode?
 
     suffer = Suffering.find_or_create_by(participant: team.victim, question: game.current_question)
 

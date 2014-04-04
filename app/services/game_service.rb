@@ -34,9 +34,11 @@ class GameService
   end
 
   def start_punishment
-    if current_question
-      current_question.start_punishment
-    end 
+    current_question.start_punishment unless current_question.nil?
+  end
+
+  def stop_punishment
+    close_current_question
   end
 
   def current_question
@@ -82,7 +84,7 @@ class GameService
     quiz.status == 'closed'
   end
 
-  def wait_for_violence?
-    current_question && current_question.wait_checking?
+  def in_punishment_mode?
+    current_question && current_question.punishment?
   end
 end

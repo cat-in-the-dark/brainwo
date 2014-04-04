@@ -31,7 +31,8 @@ class Owner::GameController < OwnerController
   end
 
   def stop_punishment
-    #TODO
+    @game.stop_punishment
+    
     redirect_to owner_game_path(quiz_id: @game.quiz.id)
   end
 

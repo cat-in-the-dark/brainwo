@@ -18,6 +18,7 @@ class Owner::JudgementController < OwnerController
     if ps.hurt!(params[:pain_amount].to_i)
       render json: { status: :accepted, pain: ps.pain_count, all_pain: ps.all_pain_count }
     else
+      logger.info "GAME NOT IN PUNISH MODE"
       render json: { status: :not_accepted, pain: ps.pain_count, all_pain: ps.all_pain_count, msg: "victim not set" }
     end
   end

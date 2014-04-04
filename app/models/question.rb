@@ -34,9 +34,4 @@ class Question < ActiveRecord::Base
       transition [:used, :unused] => :punishment
     end
   end 
-
-  def wait_checking?
-    #TODO - questions can't know that game is in pain-or-checking mode!!!
-    true
-  end
 end

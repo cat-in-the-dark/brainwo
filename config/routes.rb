@@ -15,10 +15,11 @@ Brainwo::Application.routes.draw do
     
 
     get 'game/:quiz_id/rate' => 'game#rate', as: :game_rate
+    put 'game/:quiz_id/stop_punishment' => 'game#stop_punishment', as: :game_stop_punishment
     post 'game/:quiz_id/fill_teams_answers' => 'game#fill_teams_answers', as: :fill_teams_answers
     put 'game/:quiz_id/start' => 'game#start', as: :start_game
     put 'game/:quiz_id/close' => 'game#close', as: :close_game
-    get 'game/:quiz_id/set_question/:question_id' => 'game#set_question', as: :set_game_question
+    put 'game/:quiz_id/set_question/:question_id' => 'game#set_question', as: :set_game_question
     get 'game/:quiz_id' => 'game#show', as: :game
     get 'game/:quiz_id/question/:question_id' => 'game#question', as: :game_question
     get 'game/:quiz_id/results/rating' => 'results#rating', as: :game_rating

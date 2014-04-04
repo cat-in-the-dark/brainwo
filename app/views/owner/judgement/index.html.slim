@@ -1,6 +1,6 @@
 h1 Select team
 hr
-- if @game.wait_for_violence?
+- if @game.in_punishment_mode?
   .list-group
     - @teams.each do |team|
       = link_to owner_quiz_judgement_team_path({quiz_id: @game.quiz.id, team_id: team.id}), :'data-no-turbolink'=> '', class: "#{team_class(team)} list-group-item" do
