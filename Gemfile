@@ -77,7 +77,3 @@ group :production do
   #spesial for heroku deploy and logging
   gem 'rails_12factor'
 end
-
-group :funny do
-  gem 'lolcommits'
-end
