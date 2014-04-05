@@ -6,6 +6,7 @@ class TeamsVictimsCollection
 
   def save
     return false if @teams.nil?
+    return false if @victims_hash.nil?
     Rails.logger.info "VICTIMS: #{@victims_hash.as_json}"
 
     @teams.each do |team|

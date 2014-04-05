@@ -3,18 +3,18 @@ h1
   small #{@team.victim_name}
 .progress
   .progress-bar role="progressbar" style="width: #{@ps.pain_count_percent}%;" id='pain-pbar'
-    | #{@ps.pain_count_percent}%
+    | #{@ps.pain_count} / #{@ps.all_pain_count}
 hr
 .row
   .col-sm-4
   .col-sm-4
-    = link_to 'Hurt +5', '#', class: 'btn btn-primary btn-block btn-lg', id: 'js-increment-five-action', data: {url: owner_quiz_judgement_hurt_url({team_id: @team.id, quiz_id: @game.quiz.id})}
+    = link_to 'Hurt +5', '#', class: 'btn btn-primary btn-block btn-lg', id: 'js-increment-five-action', data: {url: owner_quiz_judgement_hurt_url({team_id: @team.id, quiz_id: @game.quiz.id})}, disabled: status(@ps)
   .col-sm-4
 hr
 .row
   .col-sm-4
   .col-sm-4
-    = link_to 'Hurt +1', '#', class: 'btn btn-info btn-block btn-lg', id: 'js-increment-action', data: {url: owner_quiz_judgement_hurt_url({team_id: @team.id, quiz_id: @game.quiz.id})}
+    = link_to 'Hurt +1', '#', class: 'btn btn-info btn-block btn-lg', id: 'js-increment-action', data: {url: owner_quiz_judgement_hurt_url({team_id: @team.id, quiz_id: @game.quiz.id})}, disabled: status(@ps)
   .col-sm-4
 hr
 .row

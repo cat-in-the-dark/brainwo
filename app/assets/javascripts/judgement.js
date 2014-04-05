@@ -2,7 +2,7 @@ $(function(){
   function updateProgress(current, total) {
     percentage = Math.round(current * 100 / total) + '%';
     $('#pain-pbar').css('width', percentage);
-    $('#pain-pbar').text(percentage);
+    $('#pain-pbar').text([current, ' / ', total].join(''));
   }
   $('#js-increment-five-action').click(function(event) {
     event.preventDefault();

@@ -16,8 +16,7 @@ class PainService
 
   def hurt!(hurt_count)
     return false if hurt_count < 0
-    return false if team.victim.nil?
-    return false unless game.in_punishment_mode?
+    return false if immortal?
 
     suffer = Suffering.find_or_create_by(participant: team.victim, question: game.current_question)
 
@@ -27,6 +26,10 @@ class PainService
       suffer.update_attribute(:pain_count, suffer.pain_count + hurt_count)
     end
     true
+  end
+
+  def immortal?
+    team.nil? || team.victim.nil? || !game.in_punishment_mode?
   end
 
   def pain_count

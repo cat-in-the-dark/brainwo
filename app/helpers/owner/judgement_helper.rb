@@ -11,7 +11,11 @@ module Owner::JudgementHelper
     if team.victim && @game.team_fail?(team)
       'list-group-item-danger'
     else
-      'list-group-item-success'
+      ''
     end
+  end
+
+  def status(pain_service)
+    "disabled" if pain_service.immortal?
   end
 end
