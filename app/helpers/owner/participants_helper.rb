@@ -1,0 +1,2 @@
+module Owner::ParticipantsHelper
+end

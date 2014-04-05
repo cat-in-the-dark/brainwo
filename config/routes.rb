@@ -3,10 +3,11 @@ Brainwo::Application.routes.draw do
   
   namespace :owner do
     root 'quizzes#index'
-    resources :teams, except: :show
     resources :questions
     resources :quizzes do
-      resources :teams
+      resources :teams do
+        resources :participants, only: [:create, :edit, :update, :destroy]
+      end
       get 'judgement' => 'judgement#index'
       get 'judgement/:team_id' => 'judgement#show', as: :judgement_team
       post 'judgement/:team_id/hurt' => 'judgement#hurt', as: :judgement_hurt

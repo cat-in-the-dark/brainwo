@@ -1,0 +1,16 @@
+h1 Team '#{@team.name}'
+= render 'owner/participants/form', participant: @team.participants.build
+table.table
+  thead
+    tr
+      th #
+      th Name
+      th
+  tbody
+    - @team.participants.decorate.each do |participant|
+      tr
+        td= participant.id
+        td= participant.full_name
+        td.actions
+          = link_to 'Edit', edit_owner_quiz_team_participant_path(@quiz, @team, participant), class: 'btn btn-warning'
+          = link_to 'Delete', [:owner, @quiz, @team, participant], method: :delete, class: 'btn btn-danger'

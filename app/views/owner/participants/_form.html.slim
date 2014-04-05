@@ -1,0 +1,10 @@
+= form_for [:owner, participant.team.quiz, participant.team, participant], html: {class: 'form-inline'} do |f|
+  = render 'owner/layouts/error_messages', object: f.object
+  .form-group
+    = f.label :name, class: 'sr-only'
+    = f.text_field :name, class: 'form-control', placeholder: 'Name'
+  .form-group
+    = f.label :surname, class: 'sr-only'
+    = f.text_field :surname, class: 'form-control', placeholder: 'Surname'
+  = f.submit 'Add', class: 'btn btn-success'
+    

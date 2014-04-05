@@ -5,6 +5,10 @@ class Owner::TeamsController < OwnerController
     @teams = @quiz.teams
   end
 
+  def show
+    @team = @quiz.teams.find params[:id]
+  end
+
   def new
     @team = @quiz.teams.build
   end
