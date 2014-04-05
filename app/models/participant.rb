@@ -12,7 +12,7 @@
 
 class Participant < ActiveRecord::Base
   belongs_to :team
-  has_many :sufferings, class_name: Suffering
+  has_many :sufferings, class_name: Suffering, dependent: :destroy
 
   validates :team_id, presence: true
   validates :name, presence: true, length: { maximum: 20 }

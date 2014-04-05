@@ -13,8 +13,8 @@
 #
 
 class Question < ActiveRecord::Base
-  has_many :sufferings, class_name: Suffering
-  has_many :team_answers, class_name: TeamAnswer
+  has_many :sufferings, class_name: Suffering, dependent: :destroy
+  has_many :team_answers, class_name: TeamAnswer, dependent: :destroy
   has_many :teams, through: :team_answers
   belongs_to :quiz
 
