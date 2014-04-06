@@ -7,7 +7,7 @@ table.table
       th Pain
   tbody
     - @teams.each do |team|
-      tr
+      tr class="#{team_rating_klass(team)}"
         td= team.name
         - @questions.each do |question|
           td= team.is_right_for?(question)

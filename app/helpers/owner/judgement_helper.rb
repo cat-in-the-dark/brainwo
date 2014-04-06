@@ -8,11 +8,8 @@ module Owner::JudgementHelper
   end
 
   def team_class(team)
-    if team.victim && @game.team_fail?(team)
-      'list-group-item-danger'
-    else
-      ''
-    end
+    'list-group-item-info' if team.victim && @game.team_fail?(team)
+    'list-geoup-item-danger' if team.killed?
   end
 
   def status(pain_service)

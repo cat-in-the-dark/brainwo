@@ -8,9 +8,9 @@ class PainService
 
   def kill_or_reanimate_team!
     if team.status.eql?('alive')
-      team.update_attribute :status, 'killed'
+      team.kill
     else
-      team.update_attribute :status, 'alive'
+      team.reanimate
     end
   end
 
@@ -29,7 +29,7 @@ class PainService
   end
 
   def immortal?
-    team.nil? || team.victim.nil? || !game.in_punishment_mode?
+    team.nil? || team.killed? || team.victim.nil? || !game.in_punishment_mode? || !game.team_fail?(team)
   end
 
   def pain_count

@@ -20,6 +20,17 @@ class Team < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :quiz, presence: true
+  validates :state, presence: true
 
   scope :with_rating, -> { includes(:answers).references(:answers).order(:created_at) }
+
+  state_machine initial: :alive do
+    event :kill do 
+      transition :alive => :killed
+    end
+
+    event :reanimate do
+      transition :killed => :alive
+    end
+  end
 end
