@@ -1,7 +1,11 @@
-- @teams.each do |team|
-  div
-    = team.name
-    - if team.is_right_for?(@game.current_question)
-      = 100
-    - else
-      = team.pain_count(@game.current_question)
+- if @game.in_punishment_mode?
+  h1 = @game.current_question.title
+  - @teams.each do |team|
+    div
+      = team.name
+      - if team.is_right_for?(@game.current_question)
+        = 100
+      - else
+        = team.pain_count(@game.current_question)
+- else
+  h1 Wait punishment

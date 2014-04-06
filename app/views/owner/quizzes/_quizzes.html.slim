@@ -13,4 +13,5 @@ table.table.table-hover
         td= link_to 'Quizer', owner_game_path({quiz_id: quiz.id}), class: 'btn btn-info btn-block'
         td= link_to 'Judjement', [:owner, quiz, :judgement], class: 'btn btn-info btn-block'
         td= link_to 'Rating', owner_game_rating_path({quiz_id: quiz.id}), class: 'btn btn-info btn-block'
+        td= link_to 'Punishment', owner_game_punishment_path({quiz_id: quiz.id}), class: 'btn btn-info btn-block'
         td.actions= link_to 'Settings', [:owner, quiz], class: 'btn btn-warning'
