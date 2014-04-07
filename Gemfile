@@ -78,6 +78,8 @@ end
 gem 'travis-lint', require: false
 gem 'coveralls', require: false
 
+gem 'codeclimate-test-reporter', group: :test, require: nil
+
 group :production do
   #spesial for heroku deploy and logging
   gem 'rails_12factor'
