@@ -16,7 +16,7 @@ class PainService
   end
 
   def kill_or_reanimate_team!
-    if team.status.eql?('alive')
+    if team.alive?
       team.kill
     else
       team.reanimate

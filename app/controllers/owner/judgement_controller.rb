@@ -28,7 +28,7 @@ class Owner::JudgementController < OwnerController
     ps = PainService.new(@team, @game)
     ps.kill_or_reanimate_team!
     
-    render json: { status: :updated, life_status: @team.status }
+    render json: { status: :updated, life_status: @team.state }
   end
 
   private
