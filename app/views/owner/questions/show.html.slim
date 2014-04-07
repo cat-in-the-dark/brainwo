@@ -1,8 +1,22 @@
-=link_to 'Back to quiz', owner_game_path({quiz_id: @question.quiz.id})
+=link_to 'Back to quiz', owner_game_path({quiz_id: @question.quiz.id}), class: 'btn btn-default'
 =link_to 'Edit', edit_owner_question_path(@question), class: 'btn btn-warning', :'data-no-turbolink'=> ''
 =link_to 'Delete', owner_question_path(@question), method: :delete, class: 'btn btn-danger'
-hr
-=markdown @question.foreword
-hr
-h3 The question is!!
-=markdown @question.core
+h2
+  | #{@question.title}
+  span.label.label-info= @question.author
+  span.badge= @question.pain_count
+.panel.panel-info
+  .panel-heading
+    h3.panel-title Foreword 
+  .panel-body
+    = markdown @question.foreword
+.panel.panel-success
+  .panel-heading
+    h3.panel-title Question
+  .panel-body
+    = markdown @question.core
+.panel.panel-warning
+    .panel-heading
+      h3.panel-title Answer
+    .panel-body
+      = markdown @question.answer

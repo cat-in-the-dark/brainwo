@@ -1,5 +1,8 @@
-h1 Rate teams
-h3= "Question #{@game.current_question.title}"
+h1 
+  | Rate teams in 
+  small '#{@game.current_question.title}'
+blockquote
+  p= @game.current_question.answer
 =form_for(@teams_answers, url: owner_fill_teams_answers_path(quiz_id: @game.quiz.id)) do |f|
   = render 'owner/layouts/error_messages', object: f.object
   = f.fields_for 'question', @game.current_question do |question_form|
@@ -19,7 +22,7 @@ h3= "Question #{@game.current_question.title}"
           =f.fields_for "answers[#{answer.team.id}]", answer do |answer_form|
             td= answer.team.name
             td= answer_form.check_box :is_right
-            td= answer_form.text_field :body
+            td= answer_form.text_field :body, class: 'form-control'
           =f.fields_for "victims[#{answer.team.id}]", answer.team do |team_form|
             td= team_form.collection_select :victim_id, answer.team.participants.decorate, :id, :full_name, {}, class: 'form-control' 
-  =f.submit 'Save rating and close question', class: 'btn btn-primary'
+  =f.submit 'Save rating and start punishment', class: 'btn btn-primary'

@@ -1,21 +1,26 @@
 = form_for [:owner, @question] do |f|
   = render 'owner/layouts/error_messages', object: f.object
   = hidden_field_tag :quiz_id, @question.quiz.id
+  
   .form-group
     = f.label :title
     = f.text_field :title, class: 'form-control'
+  
   .form-group
     = f.label :tags
     = f.text_field :tags, class: 'form-control'
+  
   .form-group
     = f.label :author
     = f.text_field :author, class: 'form-control'  
-  .form-group
-    = f.label :answer
-    = f.text_field :answer, class: 'form-control'
+  
   .form-group
     = f.label :pain_count
     = f.number_field :pain_count, class: 'form-control'
+  
+  .form-group
+    = f.label :answer
+    = f.text_area :answer, data: { provide: 'markdown'}, rows: 5
   
   .form-group
     = f.label :core
@@ -24,5 +29,6 @@
   .form-group
     = f.label :foreword
     = f.text_area :foreword, data: { provide: 'markdown'}, rows: 15
+  
   hr
   = f.button action, class: 'btn btn-success'
