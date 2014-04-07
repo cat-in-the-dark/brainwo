@@ -1,6 +1,7 @@
 h1
   | #{@team.name} 
-  small #{@team.victim_name}
+  small @#{@team.victim_name}
+  = link_to 'Judjement', [:owner, @game.quiz, :judgement], class: 'btn btn-default'
 .progress
   .progress-bar role="progressbar" style="width: #{@ps.pain_count_percent}%;" id='pain-pbar'
     | #{@ps.pain_count} / #{@ps.all_pain_count}

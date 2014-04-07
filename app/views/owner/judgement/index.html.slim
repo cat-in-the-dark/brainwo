@@ -3,7 +3,7 @@ hr
 - if @game.in_punishment_mode?
   .list-group
     - @teams.each do |team|
-      = link_to owner_quiz_judgement_team_path({quiz_id: @game.quiz.id, team_id: team.id}), :'data-no-turbolink'=> '', class: "#{team_class(team)} list-group-item" do
+      = link_to owner_quiz_judgement_team_path({quiz_id: @game.quiz.id, team_id: team.id}), :'data-no-turbolink'=> '', class: "#{team_class(PainService.new(team, @game))} list-group-item" do
         h4.list-group-item-heading= team.name
         p.list-group-item-text= team.victim_name
 - else

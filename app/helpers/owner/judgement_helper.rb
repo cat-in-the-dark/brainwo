@@ -7,9 +7,9 @@ module Owner::JudgementHelper
     end
   end
 
-  def team_class(team)
-    'list-group-item-info' if team.victim && @game.team_fail?(team)
-    'list-geoup-item-danger' if team.killed?
+  def team_class(ps)
+    return 'list-group-item-info' unless ps.immortal?
+    return 'list-group-item-danger' if ps.team.killed?
   end
 
   def status(pain_service)
