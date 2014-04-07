@@ -1,5 +1,6 @@
 class Owner::ResultsController < OwnerController
   before_action :build_game
+  respond_to :html, :json
 
   def rating
     @quiz = @game.quiz
@@ -14,7 +15,16 @@ class Owner::ResultsController < OwnerController
   end
 
   def punishment
-    @teams = @game.teams.decorate
+    @pain_service_collection = @game.teams.map do |team|
+      next unless @game.team_fail?(team)
+      PainService.new(team, @game)
+    end.compact
+
+    respond_with do |format|
+      format.json do
+        render json: @pain_service_collection
+      end
+    end
   end
 
   private

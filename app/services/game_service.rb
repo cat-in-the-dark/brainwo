@@ -15,7 +15,7 @@ class GameService
   end
 
   def team_fail?(team)
-    answer = team.answers.find_by(question: current_question)
+    answer = team.answers.find_by(question: current_question) if current_question
     
     if answer && !answer.is_right
       true

@@ -1,11 +1,29 @@
 - if @game.in_punishment_mode?
   h1 = @game.current_question.title
-  - @teams.each do |team|
-    div
-      = team.name
-      - if team.is_right_for?(@game.current_question)
-        = 100
-      - else
-        = team.pain_count(@game.current_question)
+  .row
+    - @pain_service_collection.each do |ps|
+      .col-md-4
+        p= "#{ps.team.name}@#{ps.team.victim.decorate.full_name}"
+      .col-md-8
+        .progress.progress-striped.active
+          .progress-bar.progress-bar-success role="progressbar" style="width: #{ps.pain_count_percent}%;" data={ team_id: "#{ps.team.id}" }
+            = "#{ps.pain_count} / #{ps.all_pain_count}"
+  javascript:
+    function update_progress_bar() {
+      $.ajax({
+        url: "#{owner_game_punishment_url({quiz_id: @game.quiz.id})}",
+        dataType: 'json',
+        type: 'GET',
+        success: function(res) {
+          console.log(res);
+          res.forEach(function(el) {
+            var $progress = $(".progress-bar[data-team-id=" + el.team.id + "]");
+            $progress.css('width', [Math.round(el.pain_count_percent), '%'].join(''));
+            $progress.text([el.pain_count, ' / ', el.all_pain_count].join(''));
+          });
+        }
+      });
+    }
+    var timer = setInterval(update_progress_bar, 1000);
 - else
   h1 Wait punishment

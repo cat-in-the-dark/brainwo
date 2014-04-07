@@ -1,6 +1,15 @@
 class PainService
   attr_reader :team, :game
 
+  def as_json(options = {})
+    data = {team: {id: team.id}, pain_count_percent: pain_count_percent, pain_count: pain_count, all_pain_count: all_pain_count}
+    if options[:root]
+      {pain_service: data}
+    else
+      data
+    end
+  end
+
   def initialize(team, game)
     @team = team
     @game = game

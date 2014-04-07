@@ -19,6 +19,7 @@ gem 'annotate'
 
 # View decorator for models
 gem 'draper', '~> 1.3'
+gem 'active_model_serializers'
 
 # Flexible authentication solution for Rails with Warden
 gem 'devise'
