@@ -17,6 +17,9 @@ deploy:
   run:
     - rake db:migrate
     - restart
+addons:
+  code_climate:
+    repo_token: c4bc351bec999b84a0a504cf2a58465d839f550654dfbe270bfe231768f51828
 notifications:
   email:
     - ilya.blan4@gmail.com
