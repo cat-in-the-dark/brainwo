@@ -1,6 +1,9 @@
 = link_to 'Questions', owner_game_path({quiz_id: @game.quiz.id}), class: 'btn btn-primary'
 = question_toggle(@game, @question)
-h1= @question.title
+h1
+  = @question.title 
+  - if @question.author
+    small via @#{@question.author}
 - if @question
   h3 Foreword
   = markdown @question.foreword

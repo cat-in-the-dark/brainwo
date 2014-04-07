@@ -1,8 +1,8 @@
 td= question.id
 td= question.title
-td
+td= question.tags
 td= question.pain_count
-td
+td= question.author
 td = link_to 'Preview', owner_game_question_path({quiz_id: @game.quiz.id, question_id: question.id}), class: 'btn btn-success btn-block'
 td.actions
   = link_to 'Edit', edit_owner_question_path(question), class: 'btn btn-warning', :'data-no-turbolink'=> ''

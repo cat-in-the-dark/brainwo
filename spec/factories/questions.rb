@@ -7,6 +7,8 @@ FactoryGirl.define do
     foreword "Only owner see this and read for participants"
     answer "MyText"
     pain_count 50
+    tags '#algebra #nya'
+    author 'Albert Einstein'
     quiz
   end
 end

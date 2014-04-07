@@ -19,6 +19,8 @@ class Question < ActiveRecord::Base
   belongs_to :quiz
 
   validates :title, presence: true, length: { maximum: 50 }
+  validates :author, length: { maximum: 50 }
+  validates :tags, length: { maximum: 100 }
   validates :core, presence: true, length: { maximum: 2000 }
   validates :foreword, presence: true, length: { maximum: 5000 }
   validates :answer, presence: true, length: { maximum: 2000 }

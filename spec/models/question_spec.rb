@@ -15,6 +15,8 @@ describe Question do
   it { should respond_to :pain_count }
   it { should respond_to :sufferings }
   it { should respond_to :state }
+  it { should respond_to :tags }
+  it { should respond_to :author }
   it { should be_valid }
 
   it { should validate_presence_of(:quiz) }
@@ -27,6 +29,8 @@ describe Question do
   it { should validate_numericality_of(:pain_count).only_integer.is_greater_than_or_equal_to(0) }
 
   it { should ensure_length_of(:title).is_at_most(50) }
+  it { should ensure_length_of(:author).is_at_most(50) }
+  it { should ensure_length_of(:tags).is_at_most(100) }
   it { should ensure_length_of(:foreword).is_at_most(5000) }
   it { should ensure_length_of(:core).is_at_most(2000) }
   it { should ensure_length_of(:answer).is_at_most(2000) }
