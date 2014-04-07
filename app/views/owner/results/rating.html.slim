@@ -4,11 +4,15 @@ table.table
       th Team
       - @questions.each do |question|
         th= question.id
+      th style="width: 100%;"
       th Pain
   tbody
     - @teams.each do |team|
       tr class="#{team_rating_klass(team)}"
         td= team.name
         - @questions.each do |question|
-          td= team.is_right_for?(question)
+          - correcy_class = team.is_right_for?(question) ? "success" : "danger"
+          - correcy_text = team.is_right_for?(question) ? "V" : "X"
+          td class="#{correcy_class}"= "#{correcy_text}"
+        td
         td= team.all_pain_count
