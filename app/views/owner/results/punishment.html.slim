@@ -16,10 +16,11 @@
         type: 'GET',
         success: function(res) {
           console.log(res);
-          res.forEach(function(el) {
-            var $progress = $(".progress-bar[data-team-id=" + el.team.id + "]");
-            $progress.css('width', [Math.round(el.pain_count_percent), '%'].join(''));
-            $progress.text([el.pain_count, ' / ', el.all_pain_count].join(''));
+          res.results.forEach(function(el) {
+            var ps = el.pain_service;
+            var $progress = $(".progress-bar[data-team-id=" + ps.team.id + "]");
+            $progress.css('width', [Math.round(ps.pain_count_percent), '%'].join(''));
+            $progress.text([ps.pain_count, ' / ', ps.all_pain_count].join(''));
           });
         }
       });
