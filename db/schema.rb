@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407053502) do
+ActiveRecord::Schema.define(version: 20140407153129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20140407053502) do
     t.integer  "quiz_id"
     t.integer  "victim_id"
     t.string   "state",      default: "alive"
+    t.string   "logo"
   end
 
   add_index "teams", ["name"], name: "index_teams_on_name", unique: true, using: :btree

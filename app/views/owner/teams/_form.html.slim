@@ -3,4 +3,19 @@
   .form-group
     =f.label :name
     =f.text_field :name, class: 'form-control'
+
+  .form-group
+    =f.label :logo
+    =f.text_field :logo, class: 'form-control'
+    span.help-block Just write direct url to photo. We don't save it on our  server
+    #logo= image_tag @team.logo, class: 'img-responsive'
+
   =f.submit 'Save', class: 'btn btn-success'
+
+javascript:
+  (function($){
+    $('#team_logo').on('change', function(ev){
+      var url = ev.target.value;
+      $('#logo').html("<img class='img-responsive' src='"+ url +"'>");
+    });
+  })(jQuery);

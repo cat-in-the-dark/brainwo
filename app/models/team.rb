@@ -21,6 +21,7 @@ class Team < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :quiz, presence: true
   validates :state, presence: true
+  validates :logo, length: {maximum: 250 }
 
   scope :with_rating, -> { includes(:answers).references(:answers).order(:created_at) }
 

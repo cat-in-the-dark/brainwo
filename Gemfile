@@ -12,6 +12,10 @@ gem 'therubyracer', platforms: :ruby
 # Use postgresql as the database for Active Record
 gem 'pg'
 
+# file uploader
+# gem 'carrierwave'
+# gem 'mini_magick'
+
 gem 'state_machine'
 
 # Annotate models 

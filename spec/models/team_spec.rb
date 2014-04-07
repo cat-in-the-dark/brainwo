@@ -12,6 +12,7 @@ describe Team do
   it { should respond_to :quiz }
   it { should respond_to :victim }
   it { should respond_to :state }
+  it { should respond_to :logo }
   it { should be_valid }
 
   it { should validate_presence_of(:name) }
@@ -19,4 +20,5 @@ describe Team do
   it { should validate_presence_of(:quiz) }
 
   it { should ensure_length_of(:name).is_at_most(50) }
+  it { should ensure_length_of(:logo).is_at_most(250) }
 end
