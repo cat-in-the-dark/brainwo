@@ -87,4 +87,11 @@ class GameService
   def in_punishment_mode?
     current_question && current_question.punishment?
   end
+
+  def state
+    return 'closed' if closed?
+    return 'waiting' if current_question.nil?
+    return 'punishment' if in_punishment_mode?
+    'playing'
+  end
 end

@@ -11,8 +11,12 @@ class QuizzesController < ParticipantsController
     @game = GameService.new(Quiz.started.find(params[:id]))
     @question = @game.current_question
     @question_id = @question.id if @question
-
-    stick_to_quiz @game.quiz
+    if request.env['HTTP_X_PJAX'].present? || params[:_pjax]
+      response.headers['X-PJAX-URL'] = request.url
+      render partial: 'quiz', layout: false
+    else
+      stick_to_quiz @game.quiz
+    end
   rescue
     redirect_to :root
   end
@@ -20,20 +24,31 @@ class QuizzesController < ParticipantsController
   def should_i_reload_page
     @game = GameService.new(Quiz.find(params[:id]))
     #TODO pls fix me or rewrite, rly
-    logger.info "Current question #{@game.current_question.id}. Remote #{params[:my_current_question_id]}"
-    if @game.current_question.id != params[:my_current_question_id].to_i
-      logger.info "RELOAD true"
-      render json: {reload: true}
+    if @game.current_question
+      if current_question_id_mismatched || game_state_mismatched
+        render json: {reload: true}
+      else
+        render json: {reload: false}
+      end
     else
-      logger.info "RELOAD false"
-      render json: {reload: false}
+      if params[:my_current_question_id].blank?
+        render json: { reload: false }
+      else
+        render json: { reload: true }
+      end
     end
   rescue
-    if @game.started?
-      logger.info "RELOAD false + fail"
-      render json: { reload: false }
-    else
-      render json: { reload: true }
-    end
+    logger.info "RELOAD false + fail"
+    render json: { reload: false }
+  end
+
+  private
+
+  def current_question_id_mismatched
+    @game.current_question.id != params[:my_current_question_id].to_i
+  end
+
+  def game_state_mismatched
+    @game.state != params[:my_game_state].to_s
   end
 end

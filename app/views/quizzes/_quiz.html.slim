@@ -1,0 +1,21 @@
+#question data={ bacon_url: should_i_reload_page_quiz_url(@game.quiz), question_id: @question_id, game_state: @game.state }
+  h1= @game.quiz.name
+  hr
+  - if @question
+    - if @game.in_punishment_mode?
+      h1 Let's PUNISH!!
+      .list-group
+        - @game.teams.decorate.each do |team|
+          - next if PainService.new(team, @game).immortal?
+          li.list-group-item
+            h4.list-group-item-heading= team.name
+            p.list-group-item-text= team.victim_name
+      .panel.panel-warning
+        .panel-heading
+          h3.panel-title Answer on "#{@question.title}"
+        .panel-body
+          = markdown @question.answer
+    - else
+      = markdown @question.core
+  - else
+    h1 Wait for next question

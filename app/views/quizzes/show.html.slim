@@ -1,27 +1,23 @@
-h1= @game.quiz.name
-hr
-- if @question
-  = markdown @question.core
-- else
-  -if @game.started?
-    h1 Wait for next question
-  -else
-    h1 QUIZ NOT STARTED
-
+#js-pjax-container
+  == render 'quiz'
 
 javascript:
-  function make_bacon(){
-    $.ajax({
-      url: "#{should_i_reload_page_quiz_url(@game.quiz)}", 
-      type: 'POST', 
-      dataType: 'json', 
-      data: {my_current_question_id: "#{@question_id}"},
-      success: function(res) {
-        console.log(res);
-        if (res.reload == true) {
-          location.reload();
+  $(function(){
+    function make_bacon(){
+      var $question = $('#question');
+
+      $.ajax({
+        url: $question.data('bacon-url'), 
+        type: 'POST', 
+        dataType: 'json', 
+        data: { my_current_question_id: $question.data('question-id'), my_game_state: $question.data('game-state') },
+        success: function(res) {
+          console.log(res);
+          if (res.reload == true) {
+            $.pjax({url: '', container: '#js-pjax-container'});
+          }
         }
-      }
-    });
-  }
-  var timer = setInterval(make_bacon, 2000);
+      });
+    }
+    var timer = setInterval(make_bacon, 2000);
+  });
