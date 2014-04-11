@@ -65,6 +65,8 @@ gem 'rails-assets-bootstrap-markdown'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'rails-assets-jquery-pjax'
+
 
 group :development, :test do
   # Test frameworks

@@ -144,6 +144,8 @@ GEM
       rails-assets-bootstrap (~> 3.1.1)
     rails-assets-highlightjs (8.0.0)
     rails-assets-jquery (2.1.0)
+    rails-assets-jquery-pjax (1.8.1)
+      rails-assets-jquery (>= 1.8)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -266,6 +268,7 @@ DEPENDENCIES
   rails (= 4.0.4)
   rails-assets-bootstrap-markdown
   rails-assets-highlightjs
+  rails-assets-jquery-pjax
   rails_12factor
   rspec-rails
   sass-rails (~> 4.0.3)
