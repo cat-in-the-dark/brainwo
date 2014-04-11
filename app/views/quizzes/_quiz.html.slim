@@ -19,3 +19,17 @@
       = markdown @question.core
   - else
     h1 Wait for next question
+    table.table
+      thead
+        tr
+          th Team
+          th Logo
+          th Pain endured
+          th Answers solved
+      tbody
+        - @game.teams.decorate.each do |team|
+          tr class="#{team_rating_klass(team)}"
+            td= team.name
+            td= image_tag team.logo, width: 104, height: 104
+            td= team.all_pain_count
+            td= team.solved_questions_count
