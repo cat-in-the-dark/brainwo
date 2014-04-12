@@ -1,19 +1,23 @@
 = link_to 'Questions', owner_game_path({quiz_id: @game.quiz.id}), class: 'btn btn-primary'
 = question_toggle(@game, @question)
+
 h2
   | #{@question.title}
   span.label.label-info= @question.author
   span.badge= @question.pain_count
+
 .panel.panel-info
   .panel-heading
     h3.panel-title Foreword 
   .panel-body
     = markdown @question.foreword
+
 .panel.panel-success
   .panel-heading
     h3.panel-title Question
   .panel-body
     = markdown @question.core
+
 .panel.panel-warning
   .panel-heading
     h3.panel-title Answer
