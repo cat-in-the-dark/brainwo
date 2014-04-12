@@ -24,6 +24,8 @@ class Team < ActiveRecord::Base
   validates :logo, length: {maximum: 250 }
 
   scope :with_rating, -> { includes(:answers).references(:answers).order(:created_at) }
+  scope :alive, -> { where state: 'alive' }
+  scope :killed, -> { where state: 'killed' }
 
   state_machine initial: :alive do
     event :kill do 
