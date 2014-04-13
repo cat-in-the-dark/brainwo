@@ -28,4 +28,8 @@ class TeamDecorator < Draper::Decorator
     return true if answer && answer.is_right?
     false
   end
+
+  def solved_questions_count
+    object.answers.where(is_right: true).count
+  end
 end

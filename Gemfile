@@ -22,7 +22,7 @@ gem 'state_machine'
 gem 'annotate'
 
 # View decorator for models
-gem 'draper', '~> 1.3'
+gem 'draper'
 gem 'active_model_serializers'
 
 # Flexible authentication solution for Rails with Warden
@@ -32,11 +32,11 @@ gem 'devise'
 gem 'figaro'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.2'
+gem 'sass-rails', '~> 4.0.3'
 
 # Use twitter-bootstrap as frontend framework
 gem 'bootstrap-sass'
-gem 'bootstrap_helper', '~> 4.2.3'
+gem 'bootstrap_helper'
 
 # pagination
 gem 'will_paginate'
@@ -65,6 +65,8 @@ gem 'rails-assets-bootstrap-markdown'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+gem 'rails-assets-jquery-pjax'
+
 
 group :development, :test do
   # Test frameworks

@@ -1,27 +1,7 @@
-h1= @game.quiz.name
-hr
-- if @question
-  = markdown @question.core
-- else
-  -if @game.started?
-    h1 Wait for next question
-  -else
-    h1 QUIZ NOT STARTED
-
+#js-pjax-container
+  == render 'quiz'
 
 javascript:
-  function make_bacon(){
-    $.ajax({
-      url: "#{should_i_reload_page_quiz_url(@game.quiz)}", 
-      type: 'POST', 
-      dataType: 'json', 
-      data: {my_current_question_id: "#{@question_id}"},
-      success: function(res) {
-        console.log(res);
-        if (res.reload == true) {
-          location.reload();
-        }
-      }
-    });
-  }
-  var timer = setInterval(make_bacon, 2000);
+  $(function(){
+    var quiz_updater = new BrainWo.QuizUpdater();
+  });

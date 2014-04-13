@@ -13,8 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require highlightjs
-//= require jquery-pjax
+//= require bootstrap-markdown
+//= require turbolinks
 //= require bootstrap
-//= require quizzes
-
-window.BrainWo = {}
+//= require judgement

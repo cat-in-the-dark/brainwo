@@ -19,6 +19,7 @@ class TeamsAnswersCollection
 
   def self.build(teams, question, params = {})
     Rails.logger.info "ANSWERS: #{params.as_json}"
+    teams = teams.alive
     answers = teams.map do |t| 
       answer = t.answers.find_or_initialize_by(question: question) 
       if params[t.id.to_s]
