@@ -33,7 +33,7 @@ class TeamsAnswersCollection
     TeamsAnswersCollection.new(teams, question, answers)
   end
 
-  def save
+  def save!
     if valid?
       persist!
       true
@@ -45,7 +45,7 @@ class TeamsAnswersCollection
   private
 
   def persist!
-    answers.each(&:save)
+    answers.each(&:save!)
   end
 
   def is_answers_valid

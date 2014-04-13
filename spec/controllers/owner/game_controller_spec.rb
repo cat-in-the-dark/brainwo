@@ -58,6 +58,21 @@ describe Owner::GameController do
       describe 'current question is setted' do
         before { game.set_question(question.id) }
 
+        context 'send wrong params' do
+          describe '' do
+            before do
+              post :fill_teams_answers, quiz_id: quiz.id, teams_answers_collection: {question: {pain_count: -50 }, victims: {team_1.id.to_s => {victim_id: victim_1.id}, team_2.id.to_s => {victim_id: victim_2.id}}, answers: {team_1.id => {is_right: 1, body: ''}, team_2.id => {is_right: 0, body: 'asfas'}}}
+            end
+
+            it { expect(response).to render_template :rate }
+            it { expect(game.current_question.reload).to_not be_punishment }
+            it { expect(game.current_question.reload.pain_count).to_not eql -50 }
+            it { expect(team_1.answers.count).to_not eql 1 }
+            it { expect(team_2.answers.count).to_not eql 1 }
+            it { expect(team_1.reload.victim).to_not eq victim_1 }
+          end
+        end
+
         context 'send invalid params' do
           describe 'send empty params' do
             before { post :fill_teams_answers, quiz_id: quiz.id }
@@ -113,7 +128,7 @@ describe Owner::GameController do
             it { expect(response).to redirect_to owner_game_path(quiz_id: quiz.id) }
           end
 
-          describe 'pain_count zero' do
+          describe 'pain_count 13' do
             before do
               post :fill_teams_answers, quiz_id: quiz.id, teams_answers_collection: {question: {pain_count: 13}, victims: {team_1.id.to_s => {victim_id: victim_1.id}, team_2.id.to_s => {victim_id: victim_2.id}}, answers: {team_1.id => {is_right: 1, body: ''}, team_2.id => {is_right: 0, body: 'asfas'}}}
             end

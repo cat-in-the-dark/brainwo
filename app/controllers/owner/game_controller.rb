@@ -38,15 +38,11 @@ class Owner::GameController < OwnerController
 
   def fill_teams_answers
     # WTF, plz remove this hell, make service, really!!!
-    if @game.current_question
-      @teams_answers = TeamsAnswersCollection.build(@game.teams, @game.current_question, answers_params)
-      @victims = TeamsVictimsCollection.new(@game.teams, victims_params)
+    if @game.current_question && params_presence?
+      rate_service = RateService.new(@game, answers_params, victims_params, question_params)
+      @teams_answers = rate_service.teams_answers_collection
 
-      @game.current_question.update_attributes question_params
-      logger.info question_params
-      logger.info "PAIN: #{@game.current_question.reload.pain_count}"
-      @victims.save
-      if @teams_answers.save
+      if rate_service.rate
         if @game.need_punishment?
           @game.start_punishment
           redirect_to owner_game_question_path({quiz_id: @game.quiz.id, question_id: @game.current_question.id})
@@ -87,11 +83,17 @@ class Owner::GameController < OwnerController
 
   def question_params
     params.require(:teams_answers_collection)[:question].permit(:pain_count)
+  rescue
+    nil
   end
 
   def victims_params
     params.require(:teams_answers_collection)[:victims]
   rescue
     nil
+  end
+
+  def params_presence?
+    !answers_params.nil? && !question_params.nil? && !victims_params.nil?
   end
 end
