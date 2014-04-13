@@ -23,3 +23,5 @@
 /config/application.yml
 /coverage
 /public/pictures/
+/public/assets/
+/public/teams/
