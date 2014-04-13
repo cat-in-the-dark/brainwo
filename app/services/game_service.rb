@@ -14,6 +14,10 @@ class GameService
     quiz.teams
   end
 
+  def participants
+    Participant.where('team_id in (?)', teams.ids)
+  end
+
   def team_fail?(team)
     answer = team.answers.find_by(question: current_question) if current_question
     

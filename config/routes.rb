@@ -25,6 +25,7 @@ Brainwo::Application.routes.draw do
     get 'game/:quiz_id/question/:question_id' => 'game#question', as: :game_question
     get 'game/:quiz_id/results/rating' => 'results#rating', as: :game_rating
     get 'game/:quiz_id/results/punishment' => 'results#punishment', as: :game_punishment
+    get 'game/:quiz_id/results/overall' => 'results#overall', as: :game_overall
   end
   
   resources :quizzes, only: [:index, :show] do

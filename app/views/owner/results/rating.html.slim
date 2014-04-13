@@ -11,7 +11,7 @@ table.table
       tr class="#{team_rating_klass(team)}"
         td
           = team.name
-          = image_tag team.logo, class: 'team-logo'
+          = image_tag team.logo
         - @questions.each do |question|
           - correcy_class = team.is_right_for?(question) ? "success" : "danger"
           - correcy_text = team.is_right_for?(question) ? "V" : "X"

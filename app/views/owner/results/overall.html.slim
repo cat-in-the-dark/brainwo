@@ -1,2 +1,14 @@
-h1 Owner::Results#overall
-p Find me in app/views/owner/results/overall.html.slim
+table.table
+  thead
+    tr
+      th Team
+      th Logo
+      th Participant
+      th Pain endured
+  tbody
+    - @participants.each do |part|
+      tr class="#{team_rating_klass(part.team)}"
+        td= part.team.name
+        td= image_tag part.team.logo, class: 'team-little-logo'
+        td= part.full_name
+        td= part.pain_count

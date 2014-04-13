@@ -12,6 +12,9 @@ class Owner::ResultsController < OwnerController
   end
 
   def overall
+    @participants = @game.participants.decorate.sort do |a,b|
+      b.pain_count <=> a.pain_count
+    end
   end
 
   def punishment
