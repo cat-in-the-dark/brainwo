@@ -15,3 +15,6 @@
 //= require highlightjs
 //= require jquery-pjax
 //= require bootstrap
+//= require quizzes
+
+window.BrainWo = {}

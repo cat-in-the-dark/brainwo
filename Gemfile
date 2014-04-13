@@ -22,7 +22,7 @@ gem 'state_machine'
 gem 'annotate'
 
 # View decorator for models
-gem 'draper', '~> 1.3'
+gem 'draper'
 gem 'active_model_serializers'
 
 # Flexible authentication solution for Rails with Warden
@@ -36,7 +36,7 @@ gem 'sass-rails', '~> 4.0.3'
 
 # Use twitter-bootstrap as frontend framework
 gem 'bootstrap-sass'
-gem 'bootstrap_helper', '~> 4.2.3'
+gem 'bootstrap_helper'
 
 # pagination
 gem 'will_paginate'
