@@ -30,6 +30,6 @@
         - @game.teams.decorate.each do |team|
           tr class="#{team_rating_klass(team)}"
             td= team.name
-            td= image_tag team.logo, width: 104, height: 104
+            td= image_tag team.logo, class: 'team-logo'
             td= team.all_pain_count
             td= team.solved_questions_count

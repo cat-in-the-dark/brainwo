@@ -15,7 +15,7 @@ table.table
       tr
         td= team.id
         td= link_to team.name, [:owner, @quiz, team]
-        td= image_tag team.logo
+        td= image_tag team.logo, , class: 'team-logo'
         td.actions
           = link_to 'Edit', edit_owner_quiz_team_path(@quiz, team), class: 'btn btn-warning'
           = link_to 'Delete', [:owner, @quiz, team], method: :delete, class: 'btn btn-danger'

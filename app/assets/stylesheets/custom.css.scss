@@ -44,3 +44,8 @@ body > .container {
 img {
   @include img-responsive;
 }
+
+.team-logo {
+  width: 130px;
+  height: 130px;
+}
