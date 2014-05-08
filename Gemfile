@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
 
-gem 'rails', '4.0.4'
+gem 'rails', '4.1.1'
 
 # ruby server
 gem 'thin'
@@ -12,24 +12,16 @@ gem 'therubyracer', platforms: :ruby
 # Use postgresql as the database for Active Record
 gem 'pg'
 
-# file uploader
-# gem 'carrierwave'
-# gem 'mini_magick'
-
 gem 'state_machine'
-
-# Annotate models 
-gem 'annotate'
 
 # View decorator for models
 gem 'draper'
-gem 'active_model_serializers'
 
 # Flexible authentication solution for Rails with Warden
 gem 'devise'
 
 # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
-gem 'figaro'
+# gem 'figaro'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -72,7 +64,6 @@ group :development, :test do
   # Test frameworks
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'guard-rspec'
   gem 'shoulda-matchers'
 end
 

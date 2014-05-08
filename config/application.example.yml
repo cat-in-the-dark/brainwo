@@ -1,2 +1,0 @@
-#run bandle exec rake secret to generate it
-SECRET_TOKEN: 'example token'
