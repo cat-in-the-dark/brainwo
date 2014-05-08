@@ -19,6 +19,8 @@ class Participant < ActiveRecord::Base
   validates :surname, presence: true, length: { maximum: 30 }
   validates_uniqueness_of :name, scope: :surname
 
+  default_scope { order(:surname) }
+
   def pain_count
     sufferings.sum(:pain_count)
   end

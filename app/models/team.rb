@@ -23,6 +23,7 @@ class Team < ActiveRecord::Base
   validates :state, presence: true
   validates :logo, length: {maximum: 250 }
 
+  default_scope { order(:created_at) }
   scope :with_rating, -> { includes(:answers).references(:answers).order(:created_at) }
   scope :alive, -> { where state: 'alive' }
   scope :killed, -> { where state: 'killed' }
