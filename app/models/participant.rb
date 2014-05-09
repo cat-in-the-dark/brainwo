@@ -20,6 +20,11 @@ class Participant < ActiveRecord::Base
   validates_uniqueness_of :name, scope: :surname
 
   default_scope { order(:surname) }
+  scope :with_pain_count, -> { 
+    joins(:sufferings)
+    .select('participants.name, participants.surname, SUM(sufferings.pain_count) as total_pain_count')
+    .group('sufferings.participant_id, participants.name, participants.surname')
+    .order('total_pain_count DESC') }
 
   def pain_count
     sufferings.sum(:pain_count)
