@@ -21,14 +21,6 @@ class TeamDecorator < Draper::Decorator
     object.participants.includes(:sufferings).references(:sufferings).sum('sufferings.pain_count')
   end
 
-  def is_right_for?(question)
-    return false if question.nil?
-    
-    answer = object.answers.find_by(question: question)
-    return true if answer && answer.is_right?
-    false
-  end
-
   def solved_questions_count
     object.answers.where(is_right: true).count
   end

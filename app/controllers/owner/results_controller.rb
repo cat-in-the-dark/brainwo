@@ -4,12 +4,8 @@ class Owner::ResultsController < OwnerController
 
   def rating
     @quiz = @game.quiz
-    @questions = @game.questions
-    #@teams = @quiz.teams.with_answers_count
-    @teams = @quiz.teams.with_rating.decorate.sort do |a,b|
-      # WTF!! It works, but make sql sorting plz.
-      b.answers.where(is_right: true).count <=> a.answers.where(is_right: true).count
-    end
+    @questions = @game.questions.with_answers.decorate
+    @teams = @quiz.teams.with_answers_count.decorate
   end
 
   def overall

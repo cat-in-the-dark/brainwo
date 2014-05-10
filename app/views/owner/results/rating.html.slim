@@ -8,8 +8,8 @@ table.table
       th Pain
   tbody
     - @teams.each do |team|
-      tr class="#{team_rating_klass(team)}"
-        td
+      tr
+        td class="#{team_rating_klass(team)}"
           = team.name
           = image_tag team.logo
         - @questions.each do |question|
