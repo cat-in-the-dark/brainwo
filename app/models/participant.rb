@@ -22,8 +22,8 @@ class Participant < ActiveRecord::Base
   default_scope { order(:surname) }
   scope :with_pain_count, -> { 
     joins(:sufferings)
-    .select('participants.name, participants.surname, SUM(sufferings.pain_count) as total_pain_count')
-    .group('sufferings.participant_id, participants.name, participants.surname')
+    .select('participants.team_id, participants.name, participants.surname, SUM(sufferings.pain_count) as total_pain_count')
+    .group('sufferings.participant_id, participants.name, participants.surname, participants.team_id')
     .order('total_pain_count DESC') }
 
   def pain_count
