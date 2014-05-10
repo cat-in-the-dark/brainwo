@@ -27,6 +27,13 @@ class Team < ActiveRecord::Base
   scope :with_rating, -> { includes(:answers).references(:answers).order(:created_at) }
   scope :alive, -> { where state: 'alive' }
   scope :killed, -> { where state: 'killed' }
+  scope :with_answers_count, -> { 
+    unscoped
+    .joins(:answers)
+    .select('teams.name, teams.state, teams.logo, COUNT(teams.id) as right_answers_count')
+    .where('team_answers.is_right = true')
+    .group('team_answers.team_id, teams.name, teams.id')
+    .order('right_answers DESC') }
 
   state_machine initial: :alive do
     event :kill do 
