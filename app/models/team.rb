@@ -1,6 +1,4 @@
 class Team < ActiveRecord::Base
-  STATUSES = %w(alive killed)
-
   has_many :participants, dependent: :destroy
   has_many :answers, class_name: TeamAnswer, inverse_of: :team, dependent: :destroy
   has_many :questions, through: :answers
